@@ -1,0 +1,71 @@
+body {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 14px;
+  color: #2f3432; }
+
+.rs_btn {
+  background-color: #FFC800;
+  border-color: #FFC800;
+  color: #673500;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 30px;
+  border-radius: 4px; }
+
+.rs_btn:hover {
+  background-color: #149777;
+  border-color: #149777;
+  color: #fff; }
+
+.form-group {
+  margin-bottom: 20px; }
+  .form-group label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    font-family: "Montserrat"; }
+  .form-group .form-control {
+    font-family: "Montserrat";
+    border-radius: 2px;
+    height: 40px;
+    margin: 0;
+    border: 1px solid #d4ded9;
+    outline: none !important;
+    box-shadow: none !important; }
+
+.login_register_page {
+  margin: 0;
+  padding: 0;
+  background-color: #E7EDEE;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+  .login_register_page .header_login_register {
+    margin-bottom: auto; }
+  .login_register_page .form_box {
+    background: #fff;
+    margin: 0 auto auto auto;
+    display: block;
+    width: 500px;
+    box-sizing: border-box;
+    padding: 50px 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+    .login_register_page .form_box .logo_login {
+      display: block;
+      text-align: center;
+      margin: 0 0 30px 0; }
+    .login_register_page .form_box .logo_login img {
+      display: inline-block;
+      margin: 0 auto; }
+  .login_register_page .btn_links {
+    justify-content: space-between;
+    align-items: center; }
+    .login_register_page .btn_links .link {
+      color: #2f3432;
+      font-weight: 500;
+      text-decoration: none; }
+
+/*# sourceMappingURL=main.css.map */
