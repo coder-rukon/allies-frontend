@@ -1,0 +1,197 @@
+@import 'color','variables';
+body{
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 14px;
+    color: $textColor;
+    background-color: #fff;
+}
+.rs_btn{
+    background-color: $btnBackgroundColor;
+    border-color: $btnBorderColor;
+    color:$btnColor;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 30px;
+    border-radius: 4px;
+}
+.rs_btn:hover{
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+    color:#fff;
+}
+.form-group {
+    margin-bottom: 20px;
+    label{
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
+        font-family: $fontFamily;
+    }
+    .rs_input_box_wraper{}
+    .form-control {
+        font-family: $fontFamily;
+        border-radius: 2px;
+        height: 40px;
+        margin: 0;
+        border: 1px solid #d4ded9;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+.login_register_page{
+    margin:0;
+    padding: 0;
+    background-color: #E7EDEE;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .header_login_register{
+        margin-bottom: auto;
+    }
+    .form_box{
+        background: #fff;
+        margin: 0 auto auto auto ;
+        display: block;
+        width: 500px;
+        box-sizing: border-box;
+        padding: 50px 30px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+        .logo_login{
+            display: block;
+            text-align: center;
+            margin: 0 0 30px 0;
+        }
+        .logo_login img{
+            display: inline-block;
+            margin:0 auto;
+        }
+    }
+    .btn_links{
+        justify-content: space-between;
+        align-items: center;
+        .link{
+            color:$textColor;
+            font-weight: 500;
+            text-decoration: none;
+        }
+    }
+}
+
+.main_header_section{
+    background-color:  #E7EDEE;
+    padding: 20px 0;
+    position: static;
+    z-index: 100;
+    .logo{
+        display: block;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        text-decoration: none;
+        img{
+            display: block;
+            margin: 0;
+            padding:0;
+            width: 150px;
+            max-width: 100%;
+        }
+    }
+    .header_main_row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header_main_row .left_section{}
+    .header_main_row .right_section{
+        display: flex;
+        margin: 0;
+        padding: 0;
+        gap: 30px;
+    }
+    .main_nav{
+        display: block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        align-self: center;
+        li{
+            display: block;
+            float: left;
+        }
+        li a{
+            display: block;
+            color: $textColor;
+            font-weight: 500;
+            padding: 0 15px;
+            overflow: hidden;
+        }
+        li a .label{float: left;}
+        li a .icon{
+            float: left;
+            color: #fff;
+            background: $primaryColor;
+            display: block;
+            min-width: 26px;
+            text-align: center;
+            border-radius: 20px;
+            padding: 5px;
+            margin-left: 5px;
+            font-size: 12px;
+            line-height: 15px;
+        }
+    }
+    .widgets_lists{
+
+        .dropdown_widget{
+            position: relative;
+            .dropdown_widget_controller {
+                cursor: pointer;
+                span{
+                    display: block;
+                    color: #fff;
+                    font-size: 18px;
+                    width: 50px;
+                    height: 50px;
+                    text-align: center;
+                    padding: 0;
+                    line-height: 50px;
+                    font-weight: 300;
+                    border-radius: 50%;
+                    background: $primaryColor;
+                }
+            }
+            .dropdown_items{
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #fff;
+                z-index: 100;
+                box-sizing: border-box;
+                box-shadow: 0 0 4px rgba(0,0,0,.1);
+                min-width: 170px;
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                a{
+                    display: block;
+                    text-decoration: none;
+                    color: $textColor;
+                    font-size: 14px;
+                    font-weight: 400;
+                    padding: 10px;
+                }
+                a:hover{
+                    color: $primaryColor;
+                }
+            }
+        }
+        .dropdown_widget:hover .dropdown_items{
+            display: block;
+        }
+    }
+}
