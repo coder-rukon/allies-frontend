@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AccountsPage from './pages/AccountsPage';
 import Contacts from './pages/Contacts';
 import DealsPipleline from './pages/DealsPipleline';
 import Login from './pages/Login';
@@ -18,6 +19,7 @@ class App extends Component {
                     <Route path="/contacts" element={<Contacts />}/>
                     <Route path="/property" element={<PropertyListings />}/>
                     <Route path="/deals-pipeline" element={<DealsPipleline />}/>
+                    <Route path="/accounts/*" element={<AccountsPage />}/>
                     
                 </Routes>
             </div>

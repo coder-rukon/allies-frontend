@@ -13,9 +13,10 @@ class Header extends Component {
                         </div>
                         <div className='right_section'>
                             <ul className='main_nav'>
-                                <li><Link to="/contacts"> <span className='label'>Company/Contact</span><span className='icon'>0</span></Link></li>
-                                <li><Link to="/property"> <span className='label'>Property</span><span className='icon'>10</span></Link></li>
+                                <li><Link to="/accounts"> <span className='label'>All Accounts</span><span className='icon'>0</span></Link></li>
+                                <li><Link to="/tracker"> <span className='label'>Prospect Tracker</span><span className='icon'>10</span></Link></li>
                                 <li><Link to="/deals-pipeline"> <span className='label'>Deal Pipeline</span><span className='icon'>150</span></Link></li>
+                                <li><Link to="/clients"> <span className='label'>Clients</span><span className='icon'>150</span></Link></li>
                             </ul>
                             <div className='widgets_lists'>
                                 <MyAccountWidget/>
