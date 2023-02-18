@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TabNav from '../widget/TabNav';
+import TabNav from './TabNav';
 
-class AccountsTabs extends Component {
+class CategoryTab extends Component {
     render() {
         let navItems = [
             {name:'Seller Rep (SR)',id:1},
@@ -11,10 +11,10 @@ class AccountsTabs extends Component {
         ]
         return (
             <>
-                <TabNav items={navItems} urlPrefix="/accounts" />
+                <TabNav items={navItems} urlPrefix={this.props.urlPrefix}/>
             </>
         );
     }
 }
 
-export default AccountsTabs;
+export default CategoryTab;

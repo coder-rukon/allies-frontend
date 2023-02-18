@@ -1,0 +1,79 @@
+.activity_creator{
+    .activity_creator_box{
+        display: flex;
+        width: 100%;
+        gap: 30px;
+        .form-group {
+            margin: 0;
+            width: calc(100% - 30px);
+            textarea{
+                height: 40px !important;
+                border-radius: 50px;
+                font-size: 14px;
+                padding: 8px 20px;
+            }
+        }
+        .rs_btn {
+            background: #fff;
+            padding: 6px 13px;
+            border-color: #ccc;
+            border-radius: 50px;
+        }
+    }
+}
+.activity_list_panel{
+    display: block;
+    margin: 0;
+    padding: 20px 10px;
+    .activity_list_item{
+        display: block;
+        margin: 10px 0;
+        padding: 15px 20px 15px 10px;
+        position: relative;
+        box-sizing: border-box;
+        box-shadow: 0 0 5px rgba(0,0,0,.05);
+        p{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        .controller{
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 26px;
+            width: 20px;
+            line-height: 28px;
+            div{
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: #fff;
+                z-index: 10;
+                box-sizing: border-box;
+                box-shadow: 0 0 4px rgba(0,0,0,0.5);
+                padding: 0;
+                display: none;
+                span{
+                    font-size: 13px;
+                    padding: 3px 10px;
+                    cursor: pointer;
+                    display: block;
+                    min-width: 66px;
+                    border-bottom: 1px solid #d7d7d7;
+                    transition: all .5s;
+                }
+                span:hover{
+                    color: #fff;
+                    background-color: $primaryColor;
+                }
+                span:last-child{
+                    border-bottom: 0;
+                }
+            }
+        }
+        .controller:hover > div{
+            display: block;
+        }
+    }
+}

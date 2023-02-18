@@ -10,14 +10,14 @@ import { Link, NavLink } from 'react-router-dom';
  */
 class TabNav extends Component {
     render() {
-        let url = '/accounts'
+        let url = this.props.urlPrefix ? this.props.urlPrefix : '/';
         let navItems = this.props.items;
         return (
             <div className='tab_navs_section'>
                 <div className='tab_navs_items'>
                     {
                         navItems.map( ( item , key) => {
-                            return <NavLink to={url+'/'+item.id} key={key} ><div className='item'><span className='label'>{item.name}</span><span className='icon'>{item.id}</span></div></NavLink>
+                            return <NavLink to={url+'/'+item.id} key={key} ><div className='item'><span className='label'>{item.name}</span><span className='icon'></span></div></NavLink>
                         })
                     }
                 </div>

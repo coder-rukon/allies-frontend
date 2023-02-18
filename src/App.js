@@ -18,7 +18,7 @@ class App extends Component {
                     <Route path="/register" element={<Register />}/>
                     <Route path="/contacts" element={<Contacts />}/>
                     <Route path="/property" element={<PropertyListings />}/>
-                    <Route path="/deals-pipeline" element={<DealsPipleline />}/>
+                    <Route path="/deals-pipeline/*" element={<DealsPipleline />}/>
                     <Route path="/accounts/*" element={<AccountsPage />}/>
                     
                 </Routes>

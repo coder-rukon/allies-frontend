@@ -1,4 +1,5 @@
 @import 'color','variables';
+@import 'activity';
 body{
     font-family: $fontFamily;
     font-weight: 400;
@@ -383,6 +384,150 @@ body{
                 overflow: hidden;
             }
             ul li span{}
+        }
+    }
+}
+
+.deal_deatils_section{
+    .deal_header{
+        .dh_items{
+            align-items: center;
+            //justify-content: space-between;
+            padding: 0;
+            margin-bottom: 20px;
+            gap: 30px;
+        }
+        .dh_item{
+            .company{
+                display: flex;
+                align-items: center;
+                img{
+                    display: block;
+                    max-width: 150px;
+                    margin-right: 20px;
+                }
+                span{
+                    display: block;
+                    font-weight: 600;
+                    font-size: 18px;
+                }
+            }
+            .contact_details{
+                display: block;
+                margin: 0;
+                padding: 0;
+                h5{
+                    font-weight: 500;
+                    font-size: 16px;
+                    display: block;
+                    margin: 0 0 5px 0;
+                }
+                span{
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 400;
+                    cursor: pointer;
+                    margin-top: 5px;
+                }
+                .link{
+                    display: block;
+                    text-decoration: none;
+                    font-size: 14px;
+                    font-weight: 400;
+                    cursor: pointer;
+                }
+                .link:hover{
+                    color: $seconderyColor;
+                }
+            }
+        }
+    }
+    .action_header{
+        background: #F8F9FA;
+        padding: 15px 30px;
+        margin: 0;
+        border-style: solid;
+        border-width: 1px 0;
+        border-color: #E1E2E3;
+
+        .action_header_row{
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: center;
+        }
+        .left_items{
+            display: flex;
+            gap: 20px;
+        }
+        .left_items>div{
+            span{
+                font-weight: 600;
+                margin-left: 10px;
+            }
+        }
+        .right_items{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            .delete_btn{
+                background: #fff;
+                border-color: #C8C8C8;
+                width: auto;
+                padding: 11px 19px;
+            }
+            .delete_btn:hover{
+                color: #000;
+            }
+        }
+    }
+}
+.dropdown_lg{}
+.dropdown_lg{
+    width: 300px;
+    max-width: 100%;
+    margin: 0;
+    .select2-container--default .select2-selection--single {
+        background-color: #fff;
+        border: 1px solid #ebebeb;
+        border-radius: 3px;
+        height: 50px;
+        padding: 0 20px;
+        width: 300px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+      
+        font-size: 16px;
+        font-weight: 400;
+        color: $textColor;
+        margin-top: 10px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 50px;
+        width: 40px;
+    }
+}
+.activity_with_tabs{
+    padding-top:20px;
+}
+.tab{
+    .tab_nav{
+        display: flex;
+        background: #F8F9FA;
+        margin: 0;
+        padding: 0;
+        border-radius: 50px;
+        align-items: center;
+        .tab_nav_item{
+            padding: 10px 30px;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+        .tab_nav_item.active{
+            background-color: $primaryColor;
+            color: #fff;
         }
     }
 }

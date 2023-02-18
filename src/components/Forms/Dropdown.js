@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import InputPlaceholder from './InputPlaceholder';
-import '../../assets/js/chosen/chosen.jquery.js';
-import '../../assets/js/chosen/chosen.min.css';
 import $ from 'jquery';
-import Helper from '../../inc/Helper';
 import { connect } from 'react-redux';
-
+import Helper from '../Helper';
+import { Select2 } from 'select2';
+import 'select2/dist/css/select2.min.css';
 class Dropddown extends Component {
     constructor(props){
         super(props);
@@ -24,38 +23,15 @@ class Dropddown extends Component {
     }
     componentWillUnmount(){
         let inputSelector = $('#'+this.id);
-        inputSelector.chosen('destroy');
     }
     initChoosen(){
         let language = this.props.language;
         let that = this;
         let inputSelector = $('#'+this.id);
-        try {
-            if(inputSelector){
-                inputSelector.chosen({
-                    disable_search_threshold:0,
-                    placeholder_text_single:this.props.placeHolder ? this.props.placeHolder : Helper.getLabel(language,'please_select','Please Select'),
-                    placeholder_text_multiple :this.props.placeHolder ? this.props.placeHolder : Helper.getLabel(language,'please_select','Please Select'),
-                    rtl:Helper.isRtl()
-                }).change(function(event){
-                    if(event.timeStamp !==that.trigerTime){
-                        if(that.props.onChange && typeof that.props.onChange === 'function'){
-                            that.trigerTime =event.timeStamp;
-                            that.props.onChange(event)
-                        }
-                    }
-                });
-            } 
-        }
-        catch(err) {
-            console.log('DropdownComponent',err);
-        }
+        inputSelector.select2();
     }
-    componentDidUpdate(prevProps) { 
-        let inputSelector = $('#'+this.id );
-        if(inputSelector){
-            inputSelector.trigger('chosen:updated');
-        }
+    componentDidUpdate() { 
+        
     }
     getInputBox = () => {
         let language = this.props.language;
@@ -67,13 +43,10 @@ class Dropddown extends Component {
             props:props
         }
         return (
-            <select defaultValue={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => props.onChange(e) : e => { } }>
-                <option></option>
+            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => props.onChange(e) : e => { } }>
                 {
                     props.options.map( (item,key) => {
-                        if(that.props.value === item.value){
-                            return(<option key={key} value={item.value} >{item.label}</option>)
-                        }
+                        
                         return(<option key={key} value={item.value} >{item.label}</option>)
                     })
                 }

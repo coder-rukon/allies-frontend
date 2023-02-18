@@ -4,6 +4,7 @@ import DealsPipelines from '../components/Deals/DealsPipelines';
 import NewDealsPopups from '../components/Deals/NewDealsPopups';
 import Button from '../components/Forms/Button';
 import MasterComponent from '../components/Layout/MasterComponent';
+import CategoryTab from '../components/widget/CategoryTab';
 
 class DealsPipleline extends Component {
     constructor(props){
@@ -24,7 +25,7 @@ class DealsPipleline extends Component {
                     <div className='container'>
                         <div className='secondery_header'>
                             <div className='left_items'>
-                                <AccountsTabs/>
+                                <CategoryTab urlPrefix='/deals-pipeline'/>
                             </div>
                             <div className='right_items'>
                                 <Button title="+ Create new deal" onClick={ e => this.openDealCreatePopup(e)} className="primary_border"/>
