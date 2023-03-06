@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Helper from '../Helper';
 import { Select2 } from 'select2';
 import 'select2/dist/css/select2.min.css';
-class Dropddown extends Component {
+class Dropdown extends Component {
     constructor(props){
         super(props);
         this.trigerTime = 0;
@@ -29,6 +29,9 @@ class Dropddown extends Component {
         let that = this;
         let inputSelector = $('#'+this.id);
         inputSelector.select2();
+        inputSelector.on("change", function (e) { 
+            that.props.onChange(e)
+         });
     }
     componentDidUpdate() { 
         
@@ -43,7 +46,8 @@ class Dropddown extends Component {
             props:props
         }
         return (
-            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => props.onChange(e) : e => { } }>
+            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => {} : e => { } }>
+                <option value={""}></option>
                 {
                     props.options.map( (item,key) => {
                         
@@ -77,10 +81,6 @@ class Dropddown extends Component {
         )
     }
 }
-const mapStateToProps = (state) => {
-    return {
-        language:state.language
-    }
-}
 
-export default  connect (mapStateToProps)  ( Dropddown );
+
+export default Dropdown;

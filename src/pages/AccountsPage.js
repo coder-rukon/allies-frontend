@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AccountsTabs from '../components/Accounts/AccountsTabs';
 import NewAccountPopup from '../components/Accounts/NewAccountPopup';
+import Api from '../components/Api';
 import Button from '../components/Forms/Button';
 import AlliesGrid from '../components/Grid/AlliesGrid';
 import MasterComponent from '../components/Layout/MasterComponent';
@@ -18,11 +19,13 @@ class AccountsPage extends Component {
         this.loadData();
     }
     loadData(){
-        fetch("https://www.ag-grid.com/example-assets/row-data.json")
-       .then(response => response.json())
-       .then(data => {
-         this.gridObj.api.setRowData(data);
-       });
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/account/all').then(res => {
+            console.log(res.data.data)
+            that.gridObj.api.setRowData(res.data.data)
+        })
     }
     onRowClick(params){
         console.log(params)
@@ -34,7 +37,7 @@ class AccountsPage extends Component {
     }
     render() {
         let headerTitles  = [
-            { field: "make", headerName:'Company' },
+            { field: "company_name", headerName:'Company' },
             { field: "make", headerName:'Stage' },
             { field: "make", headerName:'Product Type' },
             { field: "make", headerName:'Size' },
@@ -61,7 +64,7 @@ class AccountsPage extends Component {
                 <div className='grid_area'>
                     <div className='container-fluid'>
                         <AlliesGrid header={headerTitles} onRowClick={this.onRowClick.bind(this)} onGridReady={this.onGridReady.bind(this)}/>
-                        {this.state.isPopupOpen ? <NewAccountPopup onClose={ e => { this.setState({isPopupOpen:false}) }}/> : '' }
+                        {this.state.isPopupOpen ? <NewAccountPopup onClose={ e => { this.loadData(); this.setState({isPopupOpen:false}) }}/> : '' }
                     </div>
                 </div>
             </div>

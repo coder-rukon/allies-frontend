@@ -1,6 +1,7 @@
 import { createStore, combineReducers } from "redux";
+import AuthReducer from "./reducers/AuthReducer";
 const rootReducer = combineReducers({
-    abc:{abc:'ddd'}
+    auth:AuthReducer
 });
 const Store = createStore(rootReducer);
 export default Store;

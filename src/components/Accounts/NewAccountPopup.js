@@ -1,27 +1,82 @@
 import React, { Component } from 'react';
+import Api from '../Api';
 import Button from '../Forms/Button';
 import Input from '../Forms/Input';
 import Lists from '../widget/Lists/Lists';
 import Popup from '../widget/Popup';
+import Dropdown from '../Forms/Dropdown';
+import Helper from '../Helper';
 
 class NewAccountPopup extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            data:{},
+            accountTypes:[]
+        }
+    }
+    componentDidMount(){
+        this.loadAccountTypes()
+    }
+    loadAccountTypes(){
+        let api = Api;
+        let that = this;
+        api.axios().get('/account-types').then(res => {
+            that.setState({
+                accountTypes:res.data.data
+            })
+        })
+
+    }
+    onChangeHandler(e){
+        let oldData = this.state.data;
+        this.setState({
+            data:{
+                ...oldData,
+                [e.target.name]:e.target.value
+            }
+        })
+    }
+    onSaveHandler(){
+        let data = this.state.data;
+        data.device_name = "web"
+        let api = Api;
+        api.setUserToken();
+        let that =this;
+        api.axios().post('/account/create',data).then(res=>{
+            Helper.alert(res.data.message,{className:res.data.status ? 'success' : 'error'})
+            if(res.data.status === true){
+                that.setState({
+                    data:{}
+                })
+            }
+        })
+    }
     render() {
+        let accountTypesOption = this.state.accountTypes.map( item => {
+            return {
+                label:item.name,
+                value:item.id
+            }
+        })
+        let data = this.state.data;
+        console.log(data)
         return (
-            <Popup {...this.props} width="480px">
+            <Popup {...this.props} width="480px" onClose = { this.props.onClose }>
                 <div className='new_account_popup'>
                     <h2 className='title'>Create Client</h2>
-                    <Input name="account_type" label="Account Type"/>
-                    <Input name="company_name" label="Compnay Name"/>
-                    <Input name="contact_name" label="Contact Name"/>
-                    <Input name="office_phone_number" label="Office Phone Number"/>
-                    <Input name="email_address" label="Email Address"/>
-                    <Input name="address" label="Address" inputType="textarea"/>
-                    <Input name="company_website" label="Website"/>
+                    <Dropdown name="client_type" label="Account Type" options={accountTypesOption} value={data.client_type} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="company_name" label="Compnay Name" value={data.company_name} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="contact_name" label="Contact Name" value={data.contact_name} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="office_phone_number" label="Office Phone Number" value={data.office_phone_number} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="email" label="Email Address" value={data.email} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="address" label="Address" inputType="textarea" value={data.address} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="website" label="Website" value={data.website} onChange = {this.onChangeHandler.bind(this)}/>
                     <h4 className='title'>Social Links</h4>
                     <Input name="facebook" label="Facebook"/>
                     <Input name="twitter" label="Twitter"/>
                     <Input name="linkedin" label="LinkedIn"/>
-                    <Button title="Save" className="btn_blue"/>
+                    <Button onClick={ e => this.onSaveHandler(e)} title="Save" className="btn_blue"/>
                 </div>
                 
             </Popup>
