@@ -8,7 +8,7 @@ class LoginRegister extends Component {
                     
                 </div>
                 <div className='form_box'>
-                    <div className='logo_login'><img src="https://alliescommercialrealty.com/wp-content/uploads/2020/09/Allied-Commercial-Realty-Horizontal-Logo-300x103.png" alt=""/></div>
+                    <div className='logo_login'><img src="/images/logo.png" style={{maxWidth:'50%'}} alt=""/></div>
                     {this.props.children}
                 </div>
             </div>

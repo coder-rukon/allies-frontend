@@ -18,14 +18,18 @@ class AlliesGrid extends Component {
             columnDefs: this.props.header,
             pagination:true,
             paginationPageSize:50,
-            defaultColDef: {sortable: true, filter: true},
+            defaultColDef: {sortable: true, filter: true,resizable: true},
             rowSelection: 'single', // allow rows to be selected
             animateRows: true, // have rows animate to new positions when sorted
             onGridReady : this.onGridReady.bind(this),
             onRowClicked: this.onRowClicked.bind(this),
+            onFirstDataRendered: this.onFirstDataRendered.bind(this),
           };
         var eGridDiv = document.getElementById(this.id);
         this.gridObject = new Grid(eGridDiv, gridOptions);
+    }
+    onFirstDataRendered(params){
+        params.api.sizeColumnsToFit();
     }
     onGridReady(event){
         if(this.props.onGridReady && typeof this.props.onGridReady ==='function' ){

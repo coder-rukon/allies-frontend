@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AccountsPage from './pages/AccountsPage';
+import CompanyDetails from './pages/CompanyDetails';
 import Contacts from './pages/Contacts';
 import DealsPipleline from './pages/DealsPipleline';
 import Login from './pages/Login';
@@ -19,7 +20,9 @@ class App extends Component {
                     <Route path="/contacts" element={<Contacts />}/>
                     <Route path="/property" element={<PropertyListings />}/>
                     <Route path="/deals-pipeline/*" element={<DealsPipleline />}/>
-                    <Route path="/accounts/*" element={<AccountsPage />}/>
+                    <Route path="/accounts" element={<AccountsPage />}/>
+                    <Route path="/accounts/:account_type_id" element={<AccountsPage />}/>
+                    <Route path="/company/:id/:page" element={<CompanyDetails />}/>
                     
                 </Routes>
             </div>
