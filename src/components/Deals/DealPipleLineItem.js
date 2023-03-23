@@ -6,7 +6,7 @@ class DealPipleLineItem extends Component {
         let stage = this.props.stage;
         let styles = {}
         if(stage.bgColor){
-            styles.backgroundColor = stage.bgColor;
+            styles.backgroundColor = stage.color;
         }
         return (
             <div className='deals_piplelins_item'>

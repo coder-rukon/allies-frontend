@@ -3,6 +3,8 @@ const ActionTypes ={
     SET_LOGOUT:'SET_LOGOUT',
     SET_LOGIN:'SET_LOGIN',
     SET_USER:'SET_USER',
-    RESET_USER:'RESET_USER'
+    RESET_USER:'RESET_USER',
+    SET_ACCOUNT_TYPE:'SET_ACCOUNT_TYPE',
+    SET_DEAL_STAGE:'SET_DEAL_STAGE',
 }
 export default ActionTypes; 

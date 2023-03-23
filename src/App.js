@@ -18,7 +18,7 @@ class App extends Component {
                     <Route path="/login" element={<Login />}/>
                     <Route path="/register" element={<Register />}/>
                     <Route path="/contacts" element={<Contacts />}/>
-                    <Route path="/property" element={<PropertyListings />}/>
+                    <Route path="/property/:id" element={<PropertyListings />}/>
                     <Route path="/deals-pipeline/*" element={<DealsPipleline />}/>
                     <Route path="/accounts" element={<AccountsPage />}/>
                     <Route path="/accounts/:account_type_id" element={<AccountsPage />}/>

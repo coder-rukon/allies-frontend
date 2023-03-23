@@ -69,7 +69,6 @@ class AccountsPage extends Component {
             { field: "email", headerName:'Email' },
             { field: "address", headerName:'Address' }
           ]
-        console.log(this.props);
         return (
             <div className="accounts_page">
                 <div className='secondery_header_wraper'>
