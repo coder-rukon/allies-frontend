@@ -37,7 +37,7 @@ class DealsPipelines extends Component {
                 <div className='deals_piplelins_row'>
                     {
                        this.state.isLoading ? <SimpleLoader/> : dealStage.map( (stage,key ) => {
-                            return <DealPipleLineItem stage ={stage} category={1} />
+                            return <DealPipleLineItem key={key} stage ={stage} category={this.props.category} />
                         })
                     }
                 </div>

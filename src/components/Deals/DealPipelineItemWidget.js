@@ -13,16 +13,29 @@ class DealPipelineItemWidget extends Component {
             isPopupOpen:true
         })
     }
+    displayPropertyDetails(){
+        let property = this.props.property;
+        if(!property){
+            return<></>
+        }
+        return(
+            <>
+                <li><span>Property</span> : {property.name}</li>
+                <li><span>Size</span> : {property.size}</li>
+                <li><span>Zoning</span> : {property.zoning}</li>
+                <li><span>Land Area</span> : {property.land_area}</li>
+                <li><span>Year Built</span> : {property.year_built}</li>
+            </>
+        )
+    }
     render() {
+        let deal = this.props.deal;
         return (
             <>
                 <div className='pipeline_widget' onClick={ e => this.openDealDetailsPopup(e)}>
-                    <div className='dpw_title'>New Website Design</div>
+                    <div className='dpw_title'>{deal.name}</div>
                     <ul className='options'>
-                        <li><span>Size</span> : 150</li>
-                        <li><span>Zoning</span> : 150</li>
-                        <li><span>Land Area</span> : 150</li>
-                        <li><span>Year Built</span> : 150</li>
+                        {this.displayPropertyDetails()}
                     </ul>
                 </div>
                 {this.state.isPopupOpen ? <DealPopup onClose={ e => { this.setState({isPopupOpen:false}) }}/> : '' }

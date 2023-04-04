@@ -388,6 +388,9 @@ body {
         display: block;
         margin-bottom: 2px;
         overflow: hidden; }
+        .deals_piplelins .deals_piplelins_item_inner .pipeline_widget ul li span {
+          color: #0086E6;
+          font-weight: 600; }
 
 .deal_deatils_section .deal_header .dh_items {
   align-items: center;

@@ -5,6 +5,7 @@ import NewDealsPopups from '../components/Deals/NewDealsPopups';
 import Button from '../components/Forms/Button';
 import MasterComponent from '../components/Layout/MasterComponent';
 import CategoryTab from '../components/widget/CategoryTab';
+import RsWithRouter from '../components/Inc/RsWithRouter';
 
 class DealsPipleline extends Component {
     constructor(props){
@@ -19,6 +20,10 @@ class DealsPipleline extends Component {
         })
     }
     render() {
+        let category = this.props.rs_router.params.category;
+        if(category === 'all'){
+            category = null;
+        }
         return (
             <div className='deal_pipeline_page'>
                 <div className='secondery_header_wraper'>
@@ -35,11 +40,11 @@ class DealsPipleline extends Component {
                 </div>
                 {this.state.isPopupOpen ? <NewDealsPopups onClose={ e => { this.setState({isPopupOpen:false}) }}/> : '' }
                 <div className='container-fluid'>
-                    <DealsPipelines/>
+                    <DealsPipelines category={category}/>
                 </div>
             </div>
         );
     }
 }
 
-export default MasterComponent(DealsPipleline) ;
+export default MasterComponent( RsWithRouter(DealsPipleline)) ;

@@ -382,8 +382,11 @@ body{
                 display: block;
                 margin-bottom: 2px;
                 overflow: hidden;
+                span{
+                    color: $primaryColor;
+                    font-weight: 600;
+                }
             }
-            ul li span{}
         }
     }
 }

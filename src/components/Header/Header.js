@@ -15,7 +15,7 @@ class Header extends Component {
                             <ul className='main_nav'>
                                 <li><Link to="/accounts/all"> <span className='label'>All Accounts</span><span className='icon'>0</span></Link></li>
                                 <li><Link to="/property/all"> <span className='label'>Property</span><span className='icon'>0</span></Link></li>
-                                <li><Link to="/deals-pipeline"> <span className='label'>Deal Pipeline</span><span className='icon'>0</span></Link></li>
+                                <li><Link to="/deals-pipeline/all"> <span className='label'>Deal Pipeline</span><span className='icon'>0</span></Link></li>
                             </ul>
                             <div className='widgets_lists'>
                                 <MyAccountWidget/>
