@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 class DealHeader extends Component {
     render() {
         let company = {
-            name:'Abc Company',
+            name: this.props.company ?  this.props.company.company_name : '',
             logo: 'https://alliescommercialrealty.com/wp-content/uploads/2020/09/Allied-Commercial-Realty-Horizontal-Logo-300x103.png'
         }
+        let contactDetails = this.props.contactDetails ? this.props.contactDetails : {};
         return (
             <div className='deal_header'>
                 <div className='d-flex dh_items'>
@@ -17,9 +18,9 @@ class DealHeader extends Component {
                     </div>
                     <div className='dh_item'>
                         <div className='contact_details'>
-                            <h5>Md Rukon shekh</h5>
-                            <a className='link' href="rukon.info@gmail.com" target="_blank">rukon.info@gmail.com</a>
-                            <a className='link' href="01733435951" target="_blank">01733435951</a>
+                            <h5>{contactDetails.name}</h5>
+                            <a className='link' href={`mailto:${contactDetails.email}`} target="blank">{contactDetails.email}</a>
+                            <a className='link' href={'tel:'+contactDetails.phone} target="blank">{contactDetails.phone}</a>
                             <span>View More</span>
                         </div>
                     </div>

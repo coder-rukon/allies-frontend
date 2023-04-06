@@ -28,6 +28,7 @@ class Dropdown extends Component {
         let language = this.props.language;
         let that = this;
         let inputSelector = $('#'+this.id);
+        inputSelector.off("change");
         inputSelector.select2();
         inputSelector.on("change", function (e) { 
             that.props.onChange(e)
@@ -46,7 +47,7 @@ class Dropdown extends Component {
             props:props
         }
         return (
-            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => {} : e => { } }>
+            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => { } : e => { } }>
                 <option value={""}></option>
                 {
                     props.options.map( (item,key) => {

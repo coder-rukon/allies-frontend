@@ -9,6 +9,7 @@ class DealPipelineItemWidget extends Component {
         }
     }
     openDealDetailsPopup(e){
+        
         this.setState({
             isPopupOpen:true
         })
@@ -38,7 +39,7 @@ class DealPipelineItemWidget extends Component {
                         {this.displayPropertyDetails()}
                     </ul>
                 </div>
-                {this.state.isPopupOpen ? <DealPopup onClose={ e => { this.setState({isPopupOpen:false}) }}/> : '' }
+                {this.state.isPopupOpen ? <DealPopup id={deal.id} onClose={ e => { this.props.reloadDealsPage(); this.setState({isPopupOpen:false} ) }}/> : '' }
             </>
             
         );

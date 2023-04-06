@@ -37,6 +37,10 @@ let Helper = {
             }
         }
         return null;
+    },
+    formateDateFromDb(dateDateString){
+        const d = new Date(dateDateString)
+        return d.getDate()+'-'+d.getMonth()+'-'+d.getFullYear();
     }
 }
 export default Helper;

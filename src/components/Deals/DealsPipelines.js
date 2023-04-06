@@ -29,6 +29,16 @@ class DealsPipelines extends Component {
             that.props.setStage(res.data.data)
         })
     }
+    realodDeals(){
+        let that = this;
+        this.setState({
+            isLoading:true
+        },function(){
+            that.setState({
+                isLoading:false
+            })
+        })
+    }
     render() {
         let dealStage = this.props.dealStage.stage;
 
@@ -37,7 +47,7 @@ class DealsPipelines extends Component {
                 <div className='deals_piplelins_row'>
                     {
                        this.state.isLoading ? <SimpleLoader/> : dealStage.map( (stage,key ) => {
-                            return <DealPipleLineItem key={key} stage ={stage} category={this.props.category} />
+                            return <DealPipleLineItem reloadDealsPage={ this.realodDeals.bind(this)} key={key} stage ={stage} category={this.props.category} />
                         })
                     }
                 </div>
