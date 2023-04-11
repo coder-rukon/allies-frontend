@@ -4,13 +4,16 @@ import RsWithRouter from '../components/Inc/RsWithRouter';
 import MasterComponent from '../components/Layout/MasterComponent';
 import CreateProperty from '../components/Property/CreateProperty';
 import PropertyArchive from '../components/Property/PropertyArchive';
+import EditProperty from '../components/Property/EditProperty';
 
 class PropertyListings extends Component {
     displayPage(propertyId){
         if(propertyId == 'all' || !propertyId){
-            return <PropertyArchive/>
+            return <PropertyArchive {...this.props}/>
         }else if(propertyId == 'create'){
-            return <CreateProperty/>
+            return <CreateProperty  {...this.props}/>
+        }else{
+            return <EditProperty  {...this.props} id={propertyId} />
         }
     }
     render() {

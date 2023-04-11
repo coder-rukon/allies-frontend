@@ -33,10 +33,20 @@ class PropertyArchive extends Component {
             that.grid.api.setRowData(res.data.data)
         })
     }
-    onRowClick(params){}
+    onRowClick(params){
+        this.props.rs_router.navigate('/property-details/'+params.data.id)
+    }
+    onLinkClick(params){
+        alert("done")
+    }
     render() {
         let headerTitles  = [
-            { field: "name", headerName:'Property Name' },
+            { 
+                field: "name", headerName:'Property Name',
+                cellRenderer: function(params) {
+                    return '<a href="/property-details/'+params.data.id+'">'+ params.value+'</a>'
+                  } 
+            },
             { field: "size", headerName:'Size' },
             { field: "zoning", headerName:'Zoning' },
             { field: "land_area", headerName:'Land Area' },

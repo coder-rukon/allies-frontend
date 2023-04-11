@@ -72,7 +72,7 @@ class DealPipleLineItem extends Component {
                         { this.state.isLoading ? <SimpleLoader/> : '' }
                         {
                             this.state.deals.map( (deal,key) => {
-                                return <DealPipelineItemWidget reloadDealsPage = { this.props.reloadDealsPage} deal={deal.deal} property= {deal.property}/>
+                                return <DealPipelineItemWidget {...this.props} key={key} deal={deal.deal} property= {deal.property}/>
                             })
                         }
                     </div>

@@ -4,22 +4,55 @@ import Input from '../Forms/Input';
 import Dropdown from '../Forms/Dropdown';
 import Api from '../Api';
 import Helper from '../Helper';
-import Alert from '../widget/Alert';
 import DisplayErrors from '../widget/DisplayErrors';
 import SimpleLoader from '../widget/SimpleLoader';
+import Alert from '../widget/Alert';
 
-class CreateProperty extends Component {
+class EditProperty extends Component {
     constructor(props) {
         super(props);
         this.state = {
             property:{},
             errors:{},
+            notFound:false,
             isLoading:false
         }
     }
-    
+    componentDidMount(){
+        this.loadProperty()
+    }
+    loadProperty(){
+        this.setState({
+            isLoading:true,
+            property:{},
+            notFound:false,
+            errors:{},
+        })
+        let id = this.props.id,that = this;
+        let api = Api;
+        api.setUserToken();
+        api.axios().get('/property/get/'+id).then(res=>{
+            if(res.data.status){
+                that.setState({
+                    isLoading:false,
+                    property:res.data.data,
+                })
+            }else{
+                that.setState({
+                    isLoading:false,
+                    property:{},
+                    notFound:true,
+                    errors:{
+                        not:[res.data.message]
+                    }
+                })
+            }
+            
+        })
+    }
     onSaveHandler(){
         let that = this;
+        let id = this.props.id;
         that.setState({
             errors:{},
             isLoading:true
@@ -27,11 +60,11 @@ class CreateProperty extends Component {
         let data = this.state.property;
         let api = Api;
         api.setUserToken();
-        api.axios().post('/property/create',data).then(res => {
+        api.axios().put('/property/update/'+id,data).then(res => {
             if(res.data.status){
                 that.setState({
                     isLoading:false,
-                    property:{},
+                    property:res.data.data,
                     errors: {}
                 })
                 Helper.alert(res.data.message)
@@ -53,10 +86,36 @@ class CreateProperty extends Component {
             }
         })
     }
+    deleteHandler(){
+        let that = this;
+        let id = this.props.id;
+        that.setState({
+            isLoading:true
+        })
+        let api = Api;
+        api.setUserToken();
+        api.axios().delete('/property/delete/'+id).then(res => {
+            if(res.data.status){
+                that.setState({
+                    isLoading:false,
+                })
+                Helper.alert(res.data.message)
+                that.props.rs_router.navigate('/property/all')
+            }else{
+                that.setState({
+                    isLoading:false,
+                })
+                Helper.alert(res.data.message,{className:'error'})
+            }
+        })
+    }
     render() {
         let property = this.state.property;
         if(this.state.isLoading){
             return <SimpleLoader/>
+        }
+        if(this.state.notFound){
+            return <div className='container mt-3'><Alert type="danger">404!</Alert></div>
         }
         return (
             <div className='property_create_page'>
@@ -64,6 +123,7 @@ class CreateProperty extends Component {
                     <div className='container'>
                         <div className='secondery_header'>
                             <Button to={'/property/all'} title="Back To All Property" className="primary_border"/>
+                            <Button  title="Delete" onClick={ this.deleteHandler.bind(this)} className="danger"/>
                         </div>
                     </div>
                 </div>
@@ -96,4 +156,4 @@ class CreateProperty extends Component {
     }
 }
 
-export default CreateProperty;
+export default EditProperty;

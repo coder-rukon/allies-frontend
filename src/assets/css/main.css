@@ -501,4 +501,9 @@ body {
     background-color: #0086E6;
     color: #fff; }
 
+.property_form {
+  padding: 70px 0;
+  width: 700px;
+  max-width: 100%; }
+
 /*# sourceMappingURL=main.css.map */
