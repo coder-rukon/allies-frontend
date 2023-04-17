@@ -53,7 +53,7 @@ class DealPopup extends Component {
                     <HeaderActions deal={deal.deal}/>
                     <div className='row activity_with_tabs'>
                         <div className='col-xs-12 col-md-6'>
-                            <DealActivity/>
+                            <DealActivity integrator={deal.deal.id} type="deal"/>
                         </div>
                         <div className='col-xs-12 col-md-6'>
                             <Tab navs={tabNavs}/>
