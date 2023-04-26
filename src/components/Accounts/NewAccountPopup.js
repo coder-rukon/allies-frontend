@@ -66,11 +66,14 @@ class NewAccountPopup extends Component {
                 <div className='new_account_popup'>
                     <h2 className='title'>Create Client</h2>
                     <Dropdown name="client_type" label="Account Type" options={accountTypesOption} value={data.client_type} onChange = {this.onChangeHandler.bind(this)}/>
-                    <Input name="company_name" label="Compnay Name" value={data.company_name} onChange = {this.onChangeHandler.bind(this)}/>
-                    <Input name="contact_name" label="Contact Name" value={data.contact_name} onChange = {this.onChangeHandler.bind(this)}/>
-                    <Input name="office_phone_number" label="Office Phone Number" value={data.office_phone_number} onChange = {this.onChangeHandler.bind(this)}/>
-                    <Input name="email" label="Email Address" value={data.email} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="company_name" label="Company name" value={data.company_name} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="contact_name" label="Contact name" value={data.contact_name} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="title" label="Title" value={data.title} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="office_phone_number" label="Contact number" value={data.office_phone_number} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="email" label="Email" value={data.email} onChange = {this.onChangeHandler.bind(this)}/>
                     <Input name="address" label="Address" inputType="textarea" value={data.address} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="notes" label="Notes" inputType="textarea" value={data.notes} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="naics_code" label="NAICS Code" value={data.naics_code} onChange = {this.onChangeHandler.bind(this)}/>
                     <Input name="website" label="Website" value={data.website} onChange = {this.onChangeHandler.bind(this)}/>
                     <h4 className='title'>Social Links</h4>
                     <Input name="facebook" label="Facebook"/>

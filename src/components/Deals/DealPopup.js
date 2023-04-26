@@ -6,6 +6,7 @@ import DealHeader from './Dealpopupitems/DealHeader';
 import HeaderActions from './Dealpopupitems/HeaderActions';
 import Api from '../Api';
 import SimpleLoader from '../widget/SimpleLoader';
+import FileUploader from '../FileUploader/FileUploader';
 
 class DealPopup extends Component {
     constructor(props){
@@ -57,6 +58,7 @@ class DealPopup extends Component {
                         </div>
                         <div className='col-xs-12 col-md-6'>
                             <Tab navs={tabNavs}/>
+                            <FileUploader/>
                         </div>
                     </div>
                 </div>
