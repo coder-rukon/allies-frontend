@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import PropertyListings from './pages/PropertyListings';
 import Register from './pages/Register';
 import Welcome from './pages/Welcome';
+import CreateNewDeal from './pages/CreateNewDeal';
 class App extends Component {
     render() {
         return (
@@ -21,6 +22,7 @@ class App extends Component {
                     <Route path="/property/:id" element={<PropertyListings />}/>
                     <Route path="/property-details/:id" element={<PropertyListings />}/>
                     <Route path="/deals-pipeline/:category" element={<DealsPipleline />}/>
+                    <Route path="/deal/new" element={<CreateNewDeal />}/>
                     <Route path="/accounts" element={<AccountsPage />}/>
                     <Route path="/accounts/:account_type_id" element={<AccountsPage />}/>
                     <Route path="/company/:id/:page" element={<CompanyDetails />}/>

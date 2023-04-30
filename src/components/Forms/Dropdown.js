@@ -9,7 +9,7 @@ class Dropdown extends Component {
     constructor(props){
         super(props);
         this.trigerTime = 0;
-        this.id =  this.props.id ? this.props.id : new Date().getTime();
+        this.id =  this.props.id ? this.props.id : this.props.name;
         this.state ={
             isRequired: this.props.required ? true : false,
             isError:false
@@ -20,6 +20,9 @@ class Dropdown extends Component {
         setTimeout(function(){
             that.initChoosen();
         },100)
+    }
+    componentDidUpdate(prevProps){
+        
     }
     componentWillUnmount(){
         let inputSelector = $('#'+this.id);
@@ -67,7 +70,7 @@ class Dropdown extends Component {
         }
         return false;
     }
-    render() {
+    getRender(){
         let props = this.props;
         let cssClass = props.className ? 'form-group '+ props.className : 'form-group';
         if(props.labelAlign && props.labelAlign ==='left'){
@@ -80,6 +83,12 @@ class Dropdown extends Component {
                 { this.getInputBox() }
             </div>
         )
+    }
+    render() {
+        if(this.props.wraperClass){
+            return <div className={this.props.wraperClass}>{this.getRender()}</div>
+        }
+        return this.getRender()
     }
 }
 

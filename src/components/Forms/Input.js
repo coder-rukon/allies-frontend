@@ -90,7 +90,7 @@ class Input extends Component {
         }
         return false;
     }
-    render() {
+    getRender(){
         let props = this.props;
         let cssClass = this.state.cssClass;
         if(props.labelAlign && props.labelAlign ==='left'){
@@ -103,6 +103,12 @@ class Input extends Component {
                 { props.helpText ? <small className={ ( props.helpTextClass ? props.helpTextClass : '' ) + " form-text text-muted" }>{props.helpText}</small> : ''}
             </div>
         )
+    }
+    render() {
+        if(this.props.wraperClass){
+            return <div className={this.props.wraperClass}>{this.getRender()}</div>
+        }
+        return this.getRender()
     }
 }
 

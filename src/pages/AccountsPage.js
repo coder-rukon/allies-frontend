@@ -65,7 +65,9 @@ class AccountsPage extends Component {
         let headerTitles  = [
             { field: "company_name", headerName:'Company name' },
             { field: "contact_name", headerName:'Contact Name' },
-            { field: "office_phone_number", headerName:'Office Phone Number' },
+            { field: "office_phone_number", headerName:'Contact Number' },
+            { field: "naics_code", headerName:'NAICS Code' },
+            { field: "contact_owner", headerName:'Contact owner' },
             { field: "email", headerName:'Email' },
             { field: "address", headerName:'Address' }
           ]
