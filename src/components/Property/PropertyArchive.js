@@ -42,7 +42,7 @@ class PropertyArchive extends Component {
     render() {
         let headerTitles  = [
             { 
-                field: "name", headerName:'Property Name',
+                field: "name", headerName:'Projects Name',
                 cellRenderer: function(params) {
                     return '<a href="/property-details/'+params.data.id+'">'+ params.value+'</a>'
                   } 
@@ -63,7 +63,7 @@ class PropertyArchive extends Component {
                 <div className='secondery_header_wraper'>
                     <div className='container'>
                         <div className='secondery_header'>
-                            <Button to={'/property/create'} title="Create Poperty" className="primary_border"/>
+                            <Button to={'/property/create'} title="Create Project" className="primary_border"/>
                         </div>
                     </div>
                 </div>

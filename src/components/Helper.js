@@ -41,6 +41,18 @@ let Helper = {
     formateDateFromDb(dateDateString){
         const d = new Date(dateDateString)
         return d.getDate()+'-'+d.getMonth()+'-'+d.getFullYear();
+    },
+    getNullableValue(data){
+        if(data == '' || typeof data ==='undefined'){
+            return null;
+        }
+        return data;
+    },
+    getDatePickerFormate(){
+        return 'Y-m-d';
+    },
+    formateDate(dateString){
+        return dateString;
     }
 }
 export default Helper;

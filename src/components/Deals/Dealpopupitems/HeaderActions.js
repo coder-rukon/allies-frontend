@@ -40,7 +40,7 @@ class HeaderActions extends Component {
                     </div>
                     <div className='right_items'>
                         <div className='right_item'>
-                            <Dropdown className="dropdown_lg" options={dropdownOptions} onChange={this.onStageChange.bind(this)} value={deal.deal_stage}/>
+                            <Dropdown className="dropdown_lg" id="deal_stage_chaneg" options={dropdownOptions} onChange={this.onStageChange.bind(this)} value={deal.deal_stage}/>
                         </div>
                         <div className='right_item'>
                             <Button title="Delete" type="danger" className="delete_btn" iconClass="delete_icon"/>

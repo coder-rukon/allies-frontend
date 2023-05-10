@@ -22,7 +22,11 @@ class Dropdown extends Component {
         },100)
     }
     componentDidUpdate(prevProps){
-        
+        if(this.props.disable){
+            $('#'+this.id).select2({disabled:true});
+        }else{
+            $('#'+this.id).select2({disabled:false});
+        }
     }
     componentWillUnmount(){
         let inputSelector = $('#'+this.id);
@@ -37,15 +41,11 @@ class Dropdown extends Component {
             that.props.onChange(e)
          });
     }
-    componentDidUpdate() { 
-        
-    }
+  
     getInputBox = () => {
         let language = this.props.language;
         let props = this.props;
-        if(props.disable){
-            return <InputPlaceholder label= {props.value}/>
-        }
+        
         let that = {
             props:props
         }
