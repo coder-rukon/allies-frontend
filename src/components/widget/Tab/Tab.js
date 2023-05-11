@@ -4,12 +4,15 @@ class Tab extends Component {
     constructor(props){
         super(props);
         this.state = {
-            active:null
+            active:this.props.activeTab  ? this.props.activeTab  : null
         }
     }
-    onClickHanlder(id){
+    onClickHanlder(navItem){
+        if(this.props.onClick){
+            this.props.onClick(navItem)
+        }
         this.setState({
-            active:id
+            active:navItem.id
         })
     }
     render() {
@@ -19,7 +22,7 @@ class Tab extends Component {
                 <div className='tab_nav'>
                     {navs.map((navItem,key) =>{
                         return(
-                            <div className={this.state.active == navItem.id ? 'tab_nav_item active': 'tab_nav_item'} key={key} onClick={e => this.onClickHanlder(navItem.id)}>
+                            <div className={this.state.active == navItem.id ? 'tab_nav_item active': 'tab_nav_item'} key={key} onClick={e => this.onClickHanlder(navItem)}>
                                 {navItem.title}
                             </div>
                         )

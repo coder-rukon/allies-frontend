@@ -222,6 +222,8 @@ class CreateNewDeal extends Component {
         api.axios().post('/deal/create',data).then(res=>{
             Helper.alert(res.data.message,{className:res.data.status ? 'success' : 'error'})
             if(res.data.status === true){
+                that.props.rs_router.navigate('/deal-details/'+res.data.data.id)
+                Helper.alert("Deal Created")
                 that.setState({
                     data:{}
                 })
@@ -260,7 +262,7 @@ class CreateNewDeal extends Component {
                 <Input name="naics_code" label="NAICS Code" value={data.naics_code} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <div className='col-md-12'></div>
                 <Input name="address" label="Address" inputType="textarea" value={data.address} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
-                <Input name="notes" label="Notes" inputType="textarea" value={data.notes} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
+                <Input name="details" label="Notes" inputType="textarea" value={data.details} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <Input name="industry_type" label="Industry type" value={data.industry_type} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <Input name="sub_industry_type" label="Sub-industry type" value={data.sub_industry_type} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <div className='col-md-12'></div>

@@ -12,7 +12,14 @@ class CompanyDetailsTab extends Component {
         }
     }
     componentDidMount(){
-        this.laodCompany()
+        if(this.props.details){
+            this.setState({
+                company:this.props.details,
+                id:this.props.details.id
+            })
+        }else{
+            this.laodCompany()
+        }
     }
     laodCompany(){
         let api = Api,that = this;
@@ -64,11 +71,6 @@ class CompanyDetailsTab extends Component {
                             <td style={{width:'150px'}}>Website</td>
                             <td style={{width:'10px'}}>:</td>
                             <td><a href="{company.website}">{company.website}</a></td>
-                        </tr>
-                        <tr>
-                            <td style={{width:'150px'}}>company_type</td>
-                            <td style={{width:'10px'}}>:</td>
-                            <td>{company.company_type?company.company_type.name : ''}</td>
                         </tr>
                         <tr>
                             <td style={{width:'150px'}}>Address</td>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DealPopup from './DealPopup';
+import RsWithRouter from '../Inc/RsWithRouter';
 
 class DealPipelineItemWidget extends Component {
     constructor(props){
@@ -8,11 +8,9 @@ class DealPipelineItemWidget extends Component {
             isPopupOpen:false
         }
     }
-    openDealDetailsPopup(e){
-        
-        this.setState({
-            isPopupOpen:true
-        })
+    onClickHandler(e){
+        let deal = this.props.deal;
+        this.props.rs_router.navigate('/deal-details/'+deal.id);
     }
     displayPropertyDetails(){
         let property = this.props.property;
@@ -33,17 +31,16 @@ class DealPipelineItemWidget extends Component {
         let deal = this.props.deal;
         return (
             <>
-                <div className='pipeline_widget' onClick={ e => this.openDealDetailsPopup(e)}>
+                <div className='pipeline_widget' onClick={ e => this.onClickHandler(e)}>
                     <div className='dpw_title'>{deal.name}</div>
                     <ul className='options'>
                         {this.displayPropertyDetails()}
                     </ul>
                 </div>
-                {this.state.isPopupOpen ? <DealPopup id={deal.id} onClose={ e => { this.props.reloadDealsPage(); this.setState({isPopupOpen:false} ) }}/> : '' }
             </>
             
         );
     }
 }
 
-export default DealPipelineItemWidget;
+export default RsWithRouter(DealPipelineItemWidget);
