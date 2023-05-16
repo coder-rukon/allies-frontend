@@ -8,6 +8,7 @@ class DealActivity extends Component {
         this.state = {
             viewListActivity:true
         }
+        
     }
     reloadActivity(){
         this.setState({
