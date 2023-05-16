@@ -46,30 +46,20 @@ class DealDetails extends Component {
         })
     }
     getTabDetails(){
-        let activeTab = this.state.activeTab;
         let deal = this.state.deal;
-        if(activeTab ===1){
-            return <CompanyDetailsTab details={deal ? deal.dealWithCompany  : null } />
+        let activeTabId = this.state.activeTab;
+        if(activeTabId ==1){
+            return <div>Notes</div>
         }
-        else if(activeTab ===2){
-            return <PropertyDetails details={deal ? deal.property  : null }/>;
+        if(activeTabId == 2){
+            return <DealActivity integrator={deal.deal.id} type="deal"/>
         }
-        else if(activeTab ===3){
-            return <FileUploader/>;
-        }
-        else if(activeTab ===6){
-            return <p>{deal.details}</p>;
-        }
-        return "Tab contents not found!"
+        return <></>
     }
     render() {
         let tabNavs = [
-            {title:'Company',id:1},
-            {title:'Projects',id:2},
-            {title:'Files',id:3},
-            {title:'Contacts',id:4},
-            {title:'Team Members',id:5},
-            {title:'Notes',id:6},
+            {title:'Notes',id:1},
+            {title:'Activity',id:2},
         ]
         let deal = this.state.deal;
         if(this.state.isLoading || !deal){
@@ -91,13 +81,24 @@ class DealDetails extends Component {
                         <HeaderActions deal={deal.deal}/>
                         <div className='row activity_with_tabs'>
                             <div className='col-xs-12 col-md-8'>
-                                <Tab navs={tabNavs} activeTab={1} onClick={this.onTabItemClickHandler.bind(this)}/>
+                                
                                 <div className='mt-3'>
-                                    { this.getTabDetails() }
+                                    
+                                    <h2 className='section_title'>Projects Details</h2>
+                                    <PropertyDetails details={deal ? deal.property  : null }/>
+                                    <h2 className='section_title'>Lead Details</h2>
+                                    <CompanyDetailsTab details={deal ? deal.dealWithCompany  : null } />
+                                    <h2 className='section_title'>Contacts</h2>
+                                    <h2 className='section_title'>Team</h2>
                                 </div>
                             </div>
                             <div className='col-xs-12 col-md-4'>
-                                <DealActivity integrator={deal.deal.id} type="deal"/>
+                                <h2 className='section_title'>Files</h2>
+                                <FileUploader type="deal_files" integrator={deal.id}/>
+                                <Tab navs={tabNavs} activeTab={1} onClick={this.onTabItemClickHandler.bind(this)}/>
+                                <div className='mt-3'>
+                                    {this.getTabDetails()}
+                                </div>
                             </div>
                         </div>
                     </div>

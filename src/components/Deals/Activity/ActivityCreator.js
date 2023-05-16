@@ -30,7 +30,7 @@ class ActivityCreator extends Component {
         let data = {
             type:this.props.type,
             integrator: this.props.integrator,
-            contents:this.state.activity.name
+            title:this.state.activity.title
         }
         api.axios().post('/activity/create',data).then(res=>{
             that.setState({
@@ -48,7 +48,7 @@ class ActivityCreator extends Component {
         return (
             <div className='activity_creator'>
                 <div className='activity_creator_box'>
-                    <Input inputType='textarea' id="activity_input" value={this.state.activity.name} onChange={ e => this.onChangeHandler(e)} name="name" placeholder="Type here.."/>
+                    <Input inputType='textarea' id="activity_input" value={this.state.activity.title} onChange={ e => this.onChangeHandler(e)} name="title" placeholder="Type here.."/>
                     <Button title="Create" onClick={ e => this.onSaveHander(e)}/>
                 </div>
             </div>

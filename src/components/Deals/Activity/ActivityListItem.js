@@ -33,8 +33,8 @@ class ActivityListItem extends Component {
         }
         return (
             <div className='activity_list_item'>
-                <div className='controller'>...<div><span onClick={e=> this.delteHandler(e) }>Delete</span></div></div>
-                <p>{activity.contents}</p>
+                <p>{activity.title}</p>
+                <span className='creator'>{activity.user ? activity.user.name : ''}</span>
             </div>
         );
     }

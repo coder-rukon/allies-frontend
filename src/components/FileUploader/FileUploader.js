@@ -5,14 +5,18 @@ import FileUploaderItem from './FileUploaderItem';
 class FileUploader extends Component {
     render() {
         let fileList = [{},{},{},{}];
+
         return (
-            <div className='file_uploader'>
+            <div className='file_uploader_section'>
                 <UploadFile/>
-                {
-                    fileList.forEach((file,key) => {
-                        return <FileUploaderItem file={file}/>
-                    })
-                }
+                <div className='file_list'>
+                    {
+                        fileList.map((file,key) => {
+                            return <FileUploaderItem file={file}/>
+                        })
+                    }
+                </div>
+                
             </div>
         );
     }

@@ -566,3 +566,56 @@ body{
         color:#fff;
     }
 }
+.section_title{
+    color: $textColor;
+    background-color: $bgColorLight;
+    margin: 20px 0 10px 0;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 10px;
+}
+.file_uploader_section{
+    display: block;
+    margin: 20px 0;
+    .file_uploader{
+        display: inline-block;
+        border: 1px dashed rgba(0,0,0,.2);
+        padding: 15px;
+        border-radius: 10px;
+    }
+    .file_list{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid rgba(0,0,0,.1);
+        margin-top: 10px;
+    }
+    .file_uploader_item{ 
+        display: block;
+        width: 200px;
+        max-width: 46%;
+        .file_details{
+            display: flex;
+            text-decoration: none;
+        }
+        .icon{
+            width: 25px;
+            height: 25px;
+            margin-right: 9px;
+            img{
+                max-width: 100%;
+                margin:0;
+                padding:0;
+                display: block;
+            }
+        }
+        .name{
+            display: block;
+            color: #333;
+            font-size: 16px;
+        }
+    }
+}

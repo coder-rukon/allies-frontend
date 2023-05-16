@@ -23,7 +23,9 @@ class DealActivity extends Component {
     render() {
         return (
             <div className='deal_activity_section'>
-                <ActivityCreator integrator={this.props.integrator} type={this.props.type} reloadActivity = {this.reloadActivity.bind(this) }/>
+                {
+                /*<ActivityCreator integrator={this.props.integrator} type={this.props.type} reloadActivity = {this.reloadActivity.bind(this) }/>*/
+                }
                 {this.state.viewListActivity ? <ActivityList  reloadActivity = {this.reloadActivity.bind(this) }  integrator={this.props.integrator} type={this.props.type}/> : '' }
             </div>
         );
