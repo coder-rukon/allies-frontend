@@ -8,6 +8,7 @@ $.ajaxSetup({
 let Settings = {
     userTokenKey:'allies_token',
     apiUrl:'http://127.0.0.1:8000/api',
+    apiAppUrl:'http://127.0.0.1:8000',
 
 }
 

@@ -25,6 +25,8 @@
     display: block;
     margin: 0;
     padding: 20px 10px;
+    max-height: 500px;
+    overflow: auto;
     .activity_list_item{
         display: block;
         margin: 10px 0;
@@ -36,6 +38,7 @@
             margin: 0;
             padding: 0;
             font-size: 14px;
+            word-break: break-all;
         }
         .creator {
             color: #ccc;

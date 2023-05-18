@@ -12,6 +12,7 @@ import SeconderyHeader from '../components/Layout/SeconderyHeader';
 import Button from '../components/Forms/Button';
 import CompanyDetailsTab from '../components/Company/CompanyDetailsTab';
 import PropertyDetails from '../components/Property/PropertyDetails';
+import DealContacts from '../components/Deals/Contacts/DealContacts';
 
 class DealDetails extends Component {
     constructor(props){
@@ -89,12 +90,13 @@ class DealDetails extends Component {
                                     <h2 className='section_title'>Lead Details</h2>
                                     <CompanyDetailsTab details={deal ? deal.dealWithCompany  : null } />
                                     <h2 className='section_title'>Contacts</h2>
+                                    <DealContacts deal={deal ? deal.deal : null} client={deal ? deal.dealWithCompany  : null }/>
                                     <h2 className='section_title'>Team</h2>
                                 </div>
                             </div>
                             <div className='col-xs-12 col-md-4'>
                                 <h2 className='section_title'>Files</h2>
-                                <FileUploader type="deal_files" integrator={deal.id}/>
+                                <FileUploader type="deal_files" integrator={deal ?  deal.deal.id : null} integrator_type="deal"/>
                                 <Tab navs={tabNavs} activeTab={1} onClick={this.onTabItemClickHandler.bind(this)}/>
                                 <div className='mt-3'>
                                     {this.getTabDetails()}

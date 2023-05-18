@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Api from '../Api';
 import SimpleLoader from '../widget/SimpleLoader';
+import Button from '../Forms/Button';
+import CompanyEditForm from './CompanyEditForm';
 
 class CompanyDetailsTab extends Component {
     constructor(props){
@@ -8,7 +10,8 @@ class CompanyDetailsTab extends Component {
         this.state = {
             company:{},
             id:this.props.id,
-            isLoading:false
+            isLoading:false,
+            isEditing:false
         }
     }
     componentDidMount(){
@@ -37,15 +40,24 @@ class CompanyDetailsTab extends Component {
             }
         })
     }
-    render() {
-        if(this.state.isLoading){
-            return <SimpleLoader/>
-        }
-        let company = this.state.company;
-        return (
-            <div className='company_deatils_tab'>
+    onSaveSuccess(res){
+        this.setState({
+            isEditing:false
+        })
+        this.laodCompany()
+    }
+    onEditClickHandler(){
+        this.setState({
+            isEditing:true
+        })
+    }
+    getForm(company){
+        return <CompanyEditForm id = {company.id} onSaveSuccess={this.onSaveSuccess.bind(this)}/>
+    }
+    getViewMode(company){
+        return(
+            <>
                 <table className="table table-striped">
-                
                     <tbody>
                         <tr>
                             <td style={{width:'150px'}}>Name</td>
@@ -79,6 +91,18 @@ class CompanyDetailsTab extends Component {
                         </tr>
                     </tbody>
                 </table>
+                <Button title="Edit" onClick={ this.onEditClickHandler.bind(this)}/>
+            </>
+        )
+    }
+    render() {
+        if(this.state.isLoading){
+            return <SimpleLoader/>
+        }
+        let company = this.state.company;
+        return (
+            <div className='company_deatils_tab'>
+                {this.state.isEditing ? this.getForm(company) : this.getViewMode(company)}
             </div>
         );
     }

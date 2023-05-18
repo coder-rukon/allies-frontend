@@ -542,11 +542,14 @@ body{
         }
     }
 }
-.property_form{
-    padding:70px 0;
-    width: 700px;
-    max-width: 100%;
+.property_create_page{
+    .property_form{
+        padding:70px 0;
+        width: 700px;
+        max-width: 100%;
+    }
 }
+
 .custom_checkbox_option{
     display: block;
     overflow: hidden;
@@ -592,6 +595,8 @@ body{
         padding: 10px;
         border: 1px solid rgba(0,0,0,.1);
         margin-top: 10px;
+        max-height: 300px;
+        overflow: auto;
     }
     .file_uploader_item{ 
         display: block;
@@ -605,6 +610,7 @@ body{
             width: 25px;
             height: 25px;
             margin-right: 9px;
+            min-width: 25px;
             img{
                 max-width: 100%;
                 margin:0;
@@ -616,6 +622,18 @@ body{
             display: block;
             color: #333;
             font-size: 16px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        .btn:hover,
+        .btn{
+            background: $dangerColor;
+            color:#fff;
+            border-color: transparent;
+            padding: 0 7px;
+            font-size: 13px;
+            display: block;
+            margin-top: 15px;
         }
     }
 }

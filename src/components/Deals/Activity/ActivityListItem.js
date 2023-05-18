@@ -31,10 +31,11 @@ class ActivityListItem extends Component {
         if(this.state.isLoading){
             return <div className='activity_list_item'><SimpleLoader/></div> 
         }
+        let date = new Date(activity.created_at);
         return (
             <div className='activity_list_item'>
                 <p>{activity.title}</p>
-                <span className='creator'>{activity.user ? activity.user.name : ''}</span>
+                <span className='creator'>{activity.user ? activity.user.name +`( ${date.getDay() }/${date.getMonth() }/${date.getFullYear() } )`  : ''}</span>
             </div>
         );
     }

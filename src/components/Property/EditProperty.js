@@ -68,6 +68,9 @@ class EditProperty extends Component {
                     errors: {}
                 })
                 Helper.alert(res.data.message)
+                if(that.props.onSaveSuccess){
+                    that.props.onSaveSuccess(res)
+                }
             }else{
                
                 that.setState({
@@ -109,6 +112,47 @@ class EditProperty extends Component {
             }
         })
     }
+    getHeader(){
+        if(this.props.hideHeader){
+            return <></>
+        }
+        return(
+            <div className='secondery_header_wraper'>
+                <div className='container'>
+                    <div className='secondery_header'>
+                        <Button to={'/property/all'} title="Back To All Projects" className="primary_border"/>
+                        <Button  title="Delete" onClick={ this.deleteHandler.bind(this)} className="danger"/>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+    getForm(){
+        let property = this.state.property;
+        return(
+            <div className='property_form'>
+                <DisplayErrors errors={this.state.errors}/>
+                <Input name="name" label="Project Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
+                <div className='row'>
+                    <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-6'><Input name="zoning" label="Zoning"  value={property.zoning} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                </div>
+                <Input name="land_area" label="Land area"  value={property.land_area} onChange={ this.onChangeHanlder.bind(this)}/>
+                <div className='row'>
+                    <div className='col-xs-12 col-sm-4'><Input name="dock_doors" label="Dock doors"  value={property.dock_doors} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-4'><Input name="drive_in_doors" label="Drive in doors"  value={property.drive_in_doors} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-4'><Input name="clear_height" label="Clear height"  value={property.clear_height} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-4'><Input name="year_built" label="Year built"  value={property.year_built} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-3'><Input name="property_value" label="Property value"  value={property.property_value} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                    <div className='col-xs-12 col-sm-3'><Input name="lease_value" label="Lease value"  value={property.lease_value} onChange={ this.onChangeHanlder.bind(this)}/></div>
+                </div>
+                <div className='row'>
+                    <div className='col-xs-12 col-sm-4'><Dropdown name="status" label="Status" value={property.status} onChange={ this.onChangeHanlder.bind(this)} options={[{label:'Available' , value:"available"},{label:'Not Available' , value:"not_available"}]}/></div>
+                </div>
+                <Button  title="Save" className="primary_border" onClick={ this.onSaveHandler.bind(this) }/>
+            </div>
+        )
+    }
     render() {
         let property = this.state.property;
         if(this.state.isLoading){
@@ -117,38 +161,14 @@ class EditProperty extends Component {
         if(this.state.notFound){
             return <div className='container mt-3'><Alert type="danger">404!</Alert></div>
         }
+        if(this.props.onlyForm){
+            return this.getForm();
+        }
         return (
             <div className='property_create_page'>
-                <div className='secondery_header_wraper'>
-                    <div className='container'>
-                        <div className='secondery_header'>
-                            <Button to={'/property/all'} title="Back To All Projects" className="primary_border"/>
-                            <Button  title="Delete" onClick={ this.deleteHandler.bind(this)} className="danger"/>
-                        </div>
-                    </div>
-                </div>
+                { this.getHeader() }
                 <div className='container'>
-                    <div className='property_form'>
-                        <DisplayErrors errors={this.state.errors}/>
-                        <Input name="name" label="Project Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
-                        <div className='row'>
-                            <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-6'><Input name="zoning" label="Zoning"  value={property.zoning} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                        </div>
-                        <Input name="land_area" label="Land area"  value={property.land_area} onChange={ this.onChangeHanlder.bind(this)}/>
-                        <div className='row'>
-                            <div className='col-xs-12 col-sm-4'><Input name="dock_doors" label="Dock doors"  value={property.dock_doors} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-4'><Input name="drive_in_doors" label="Drive in doors"  value={property.drive_in_doors} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-4'><Input name="clear_height" label="Clear height"  value={property.clear_height} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-4'><Input name="year_built" label="Year built"  value={property.year_built} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-3'><Input name="property_value" label="Property value"  value={property.property_value} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                            <div className='col-xs-12 col-sm-3'><Input name="lease_value" label="Lease value"  value={property.lease_value} onChange={ this.onChangeHanlder.bind(this)}/></div>
-                        </div>
-                        <div className='row'>
-                            <div className='col-xs-12 col-sm-4'><Dropdown name="status" label="Status" value={property.status} onChange={ this.onChangeHanlder.bind(this)} options={[{label:'Available' , value:"available"},{label:'Not Available' , value:"not_available"}]}/></div>
-                        </div>
-                        <Button  title="Save" className="primary_border" onClick={ this.onSaveHandler.bind(this) }/>
-                    </div>
+                    {this.getForm()}
                 </div>
                 
             </div>
