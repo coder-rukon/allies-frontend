@@ -13,6 +13,7 @@ import Button from '../components/Forms/Button';
 import CompanyDetailsTab from '../components/Company/CompanyDetailsTab';
 import PropertyDetails from '../components/Property/PropertyDetails';
 import DealContacts from '../components/Deals/Contacts/DealContacts';
+import Notes from '../components/Notes/Notes';
 
 class DealDetails extends Component {
     constructor(props){
@@ -50,7 +51,7 @@ class DealDetails extends Component {
         let deal = this.state.deal;
         let activeTabId = this.state.activeTab;
         if(activeTabId ==1){
-            return <div>Notes</div>
+            return <Notes integrator={deal.deal.id} type="deal"/>
         }
         if(activeTabId == 2){
             return <DealActivity integrator={deal.deal.id} type="deal"/>
