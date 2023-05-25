@@ -597,9 +597,28 @@ body {
       display: block;
       margin-top: 15px; }
 
+.notes_section .all_notes_list {
+  max-height: 300px;
+  overflow: auto; }
 .notes_section .note_item_wraper {
   margin: 10px 0;
-  border: 1px solid #333;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   padding: 5px 10px; }
+.notes_section .note_controller {
+  display: flex;
+  clear: both;
+  margin: 15px 0 0 0;
+  justify-content: space-between;
+  padding: 7px 30px; }
+.notes_section .note_controller span {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  display: block;
+  padding: 5px 15px;
+  border-radius: 30px; }
+.notes_section .note_controller span.delete {
+  color: #ca2e2e; }
 
 /*# sourceMappingURL=main.css.map */

@@ -23,6 +23,7 @@ class Notes extends Component {
         api.setUserToken();
         let that = this;
         this.setState({
+            notes:[],
             isLoading:true
         })
         api.axios().get('/note/get/'+this.props.type+'/'+this.props.integrator).then(res=>{
@@ -66,11 +67,14 @@ class Notes extends Component {
                     <Input name="note" value={this.state.note} onChange={this.onNoteChange.bind(this)} label="Note" inputType="textarea" />
                     <Button title="Create" onClick={this.noteCreateHandler.bind(this)}/>
                 </div>
+                <div className='all_notes_list'>
                 {
                     this.state.notes.map( (note,key) => {
-                        return <NoteItem note={note} key={key} />
+                        return <NoteItem note={note} key={key} reload={this.loadNotes.bind(this)} />
                     } )
                 }
+                </div>
+                
             </div>
         );
     }
