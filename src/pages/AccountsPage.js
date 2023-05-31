@@ -80,7 +80,7 @@ class AccountsPage extends Component {
                                 <AccountsTabs/>
                             </div>
                             <div className='right_items'>
-                                <Button title="+ Create new account" onClick={ e => this.openCreateAccountPopup(e)} className="primary_border"/>
+                                <Button title="+ Create new account" onClick={ e => this.openCreateAccountPopup(e)} className=""/>
                             </div>
                         </div>
                     </div>

@@ -33,7 +33,7 @@ class DealsPipleline extends Component {
                                 <CategoryTab urlPrefix='/deals-pipeline'/>
                             </div>
                             <div className='right_items'>
-                                <Button title="+ Create new deal" onClick={ e => this.openDealCreatePopup(e)} className="primary_border"/>
+                                <Button title="+ Create new deal" onClick={ e => this.openDealCreatePopup(e)} className=""/>
                             </div>
                         </div>
                     </div>

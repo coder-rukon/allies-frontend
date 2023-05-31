@@ -36,7 +36,7 @@ class DealPipleLineItem extends Component {
         })
         let api = Api;
         api.setUserToken();
-        let data = {deal_type:this.state.category,deal_stage:this.state.stage.id}
+        let data = {deal_type:this.state.category,deal_stage:this.state.stage.id,deal_status:'active'}
         api.axios().post(Settings.apiUrl+'/deal/all',data).then(res => {
             that.setState({
                 deals:res.data.data,

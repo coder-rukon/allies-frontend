@@ -354,7 +354,7 @@ class CreateNewDeal extends Component {
         return (
             <div className='new_deal_page'>
                 <SeconderyHeader>
-                    <Button to={'/deals-pipeline/all'} title="Alll deals" className="primary_border"/>
+                    <Button to={'/deals-pipeline/all'} title="Alll deals" className=""/>
                     <h2 className='title'>Create Deal</h2>
                 </SeconderyHeader>
                 <div className='container pt-4 pb-4'>

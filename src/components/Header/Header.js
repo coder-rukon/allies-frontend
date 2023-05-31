@@ -32,10 +32,11 @@ class Header extends Component {
                         </div>
                         <div className='right_section'>
                             <ul className='main_nav'>
-                                <li><Link to="/accounts/all"> <span className='label'>All leads</span></Link></li>
-                                <li><Link to="/property/all"> <span className='label'>All Projects</span></Link></li>
+                                <li><Link to="/accounts/all"> <span className='label'>Company</span></Link></li>
+                                <li><Link to="/property/all"> <span className='label'>Property</span></Link></li>
                                 <li><Link to="/deals-pipeline/all"> <span className='label'>Deal Pipeline</span></Link></li>
-                                <li><Link to="/deal/new"> <span className='btn rs_btn primary_border'>New Deal</span></Link></li>
+                                <li><Link to="/deal-archive"> <span className='label'>Archive Deal's</span></Link></li>
+                                <li><Link to="/deal/new"> <span className='btn rs_btn'>New Deal</span></Link></li>
                             </ul>
                             <div className='widgets_lists'>
                                 <MyAccountWidget/>

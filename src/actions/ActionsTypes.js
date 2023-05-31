@@ -6,5 +6,8 @@ const ActionTypes ={
     RESET_USER:'RESET_USER',
     SET_ACCOUNT_TYPE:'SET_ACCOUNT_TYPE',
     SET_DEAL_STAGE:'SET_DEAL_STAGE',
+    SET_COUNTRY:'SET_COUNTRY',
+    SET_CITY:'SET_CITY',
+    SET_STATE:'SET_STATE',
 }
 export default ActionTypes; 

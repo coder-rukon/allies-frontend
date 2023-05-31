@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Sidebar from '../Sidebar/Sidebar';
+import Footer from '../Footer/Footer';
 
 class MasterLayout extends Component {
     render() {
@@ -14,6 +15,7 @@ class MasterLayout extends Component {
                         <div className='clearfix'></div>
                     </div>
                 </div>
+                <Footer/>
             </div>
         );
     }

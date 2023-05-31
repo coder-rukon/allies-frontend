@@ -18,6 +18,7 @@ class AlliesGrid extends Component {
             columnDefs: this.props.header,
             pagination:true,
             paginationPageSize:50,
+            rowData:this.props.data ? this.props.data : null,
             defaultColDef: {sortable: true, filter: true,resizable: true},
             rowSelection: 'single', // allow rows to be selected
             animateRows: true, // have rows animate to new positions when sorted

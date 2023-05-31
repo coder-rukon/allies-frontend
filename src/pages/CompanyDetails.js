@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import CompanyContactsList from '../components/Company/CompanyContactsList';
-import CompanyDealsList from '../components/Company/CompanyDealsList';
 import CompanyDetailsTab from '../components/Company/CompanyDetailsTab';
-import CompanyMediaFiles from '../components/Company/CompanyMediaFiles';
 import RsWithRouter from '../components/Inc/RsWithRouter';
 import MasterComponent from '../components/Layout/MasterComponent';
 import SimpleLoader from '../components/widget/SimpleLoader';
 import TabNav from '../components/widget/TabNav';
+import FileUploader from '../components/FileUploader/FileUploader';
+import SeconderyHeader from '../components/Layout/SeconderyHeader';
+import CompanyDeals from '../components/Company/CompanyDeals';
 
 class CompanyDetails extends Component {
     constructor(props){
@@ -23,9 +24,9 @@ class CompanyDetails extends Component {
         if(page =='details'){
             return <CompanyDetailsTab id={id} />
         }else if(page =='files'){
-            return <CompanyMediaFiles id={id} />
+            return <FileUploader type="deal_files" integrator={id ?  id : null} integrator_type="company_file"/>
         }else if(page =='deals'){
-            return <CompanyDealsList id={id} />
+            return <CompanyDeals deal_id={id}/>
         }else if(page =='contacts'){
             return <CompanyContactsList id={id} />
         }else{
@@ -43,9 +44,12 @@ class CompanyDetails extends Component {
         return (
             <div className="company_details_page">
                 { this.state.isLoading ? <SimpleLoader /> : "" }
-                <div className='container mt-3'>
-                    <TabNav items={navItems} urlPrefix={"/company/"+companyId} />
-                </div>
+                <SeconderyHeader>
+                    <div className='container mt-3'>
+                        <TabNav items={navItems} urlPrefix={"/company/"+companyId} />
+                    </div>
+                </SeconderyHeader>
+                
                 <div className='container mt-3'>
                     {this.getPage()}
                 </div>

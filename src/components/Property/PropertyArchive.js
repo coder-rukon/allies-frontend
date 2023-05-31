@@ -63,7 +63,7 @@ class PropertyArchive extends Component {
                 <div className='secondery_header_wraper'>
                     <div className='container'>
                         <div className='secondery_header'>
-                            <Button to={'/property/create'} title="Create Project" className="primary_border"/>
+                            <Button to={'/property/create'} title="Create Project"/>
                         </div>
                     </div>
                 </div>

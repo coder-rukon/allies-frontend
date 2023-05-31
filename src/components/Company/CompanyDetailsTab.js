@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Api from '../Api';
 import SimpleLoader from '../widget/SimpleLoader';
 import Button from '../Forms/Button';
-import CompanyEditForm from './CompanyEditForm';
+import CompanyEditFormShort from './CompanyEditFormShort';
 
 class CompanyDetailsTab extends Component {
     constructor(props){
@@ -52,7 +52,7 @@ class CompanyDetailsTab extends Component {
         })
     }
     getForm(company){
-        return <CompanyEditForm id = {company.id} onSaveSuccess={this.onSaveSuccess.bind(this)}/>
+        return <CompanyEditFormShort id = {company.id} onSaveSuccess={this.onSaveSuccess.bind(this)}/>
     }
     getViewMode(company){
         return(

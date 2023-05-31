@@ -58,6 +58,9 @@ class DealDetails extends Component {
         }
         return <></>
     }
+    onChngeAction(){
+        this.loadDeal()
+    }
     render() {
         let tabNavs = [
             {title:'Notes',id:1},
@@ -79,8 +82,7 @@ class DealDetails extends Component {
                     
                     <div className='container'>
                         
-                        <DealHeader contactDetails={deal.contactDetails} company={deal.dealWithCompany}/>
-                        <HeaderActions deal={deal.deal}/>
+                        <HeaderActions deal={deal.deal} onChngeAction = {this.onChngeAction.bind(this)}/>
                         <div className='row activity_with_tabs'>
                             <div className='col-xs-12 col-md-8'>
                                 
