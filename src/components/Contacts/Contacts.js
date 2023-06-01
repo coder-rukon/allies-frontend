@@ -82,23 +82,20 @@ class Contacts extends Component {
             return;
         }
         let contact = this.state.contact;
-        let contactsTypes = [
-            {label:'Mobile',value:'Mobile'},
-            {label:'Email',value:'Email'},
-            {label:'Address',value:'Address'},
-            {label:'Other',value:'Other'},
-        ]
         return(
             <div className='contact_form'>
                 <div className='row '>
                     <div className='col-xs-12 col-sm-3'>
                         <Input name="contact_name" label="Contact Name" value={contact.contact_name} onChange={this.onChangeHandler.bind(this)} />
                     </div>
-                    <div className='col-xs-12 col-sm-3'>
-                        <Input name="type" label="Contact Type" value={contact.type} onChange={this.onChangeHandler.bind(this)} />
+                    <div className='col-xs-12 col-sm-2'>
+                        <Input name="office_phone" label="Office phone" value={contact.office_phone} onChange={this.onChangeHandler.bind(this)} />
                     </div>
-                    <div className='col-xs-12 col-sm-3'>
-                        <Input name="details" label="Contact Details" value={contact.details} onChange={this.onChangeHandler.bind(this)} />
+                    <div className='col-xs-12 col-sm-2'>
+                        <Input name="cell_phone" label="Cell Phone" value={contact.cell_phone} onChange={this.onChangeHandler.bind(this)} />
+                    </div>
+                    <div className='col-xs-12 col-sm-2'>
+                        <Input name="email" label="Email" value={contact.email} onChange={this.onChangeHandler.bind(this)} />
                     </div>
                     <div className='col-xs-12 col-sm-3'>
                         <Button title={contact.contact_id ? 'Update' : 'Create'} className="mt-3 mb-3" onClick={ this.onSaveHandler.bind(this)}/>
@@ -122,8 +119,10 @@ class Contacts extends Component {
                         <tbody>
                             <tr>
                                 <td style={{width:'150px'}}>Contact Name</td>
-                                <td style={{width:'150px'}}>Contact type</td>
-                                <td style={{width:'150px'}}>Details</td>
+                                <td>Office phone</td>
+                                <td>Cell Phone</td>
+                                <td>Email</td>
+                                <td></td>
                             </tr>
                             {this.state.contacts.map( (contact,key) => {
                                 return <Contact key={key} contact={contact}/>

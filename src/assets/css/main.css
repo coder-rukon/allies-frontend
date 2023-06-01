@@ -659,4 +659,9 @@ body {
 .rs_grid_wraper .ag-row-odd {
   background-color: #f2f6f7; }
 
+.del_btn_icon {
+  width: 20px;
+  height: auto;
+  cursor: pointer; }
+
 /*# sourceMappingURL=main.css.map */

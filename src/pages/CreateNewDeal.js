@@ -9,6 +9,8 @@ import Button from '../components/Forms/Button';
 import SeconderyHeader from '../components/Layout/SeconderyHeader';
 import FormValidator from '../inc/FormValidator';
 import InputDatePicker from '../components/Forms/InputDatePicker';
+import ActionTypes from '../actions/ActionsTypes';
+import { connect } from 'react-redux';
 
 class CreateNewDeal extends Component {
     constructor(props){
@@ -25,7 +27,9 @@ class CreateNewDeal extends Component {
             property:{},
             dealWithClient:{},
             dealStages:[],
-            userList:[]
+            userList:[],
+            cityList:[],
+            stateList:[],
         }
         
     }
@@ -36,7 +40,38 @@ class CreateNewDeal extends Component {
         this.loadProperty()
         this.loadUsers()
         this.loadDealStages()
+        this.loadCountry()
+        this.loadState()
+        this.loadCity()
     }
+    loadCountry(){
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/locations/country').then(res => {
+            console.log(res);
+            that.props.setCountry(res.data)
+        })
+    }
+    loadState(){
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/locations/state').then(res => {
+            console.log(res);
+            that.props.setState(res.data)
+        })
+    }
+    loadCity(){
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/locations/city').then(res => {
+            console.log(res);
+            that.props.setCity(res.data)
+        })
+    }
+    
     validatorInit(){
         let validConfiguration = [ 
             {name:'client_type',displayName:'Client type',types:['Required'], min:1, max:50},
@@ -249,6 +284,9 @@ class CreateNewDeal extends Component {
             }
         })
         let disibaleEdit = this.state.isExistingClient;
+        let countryOptions = this.props.location.country.map( item => { return {label: item.name,value:item.id}});
+        let stateOptions = this.state.stateList.map( item => { return {label:item.name,value:item.id}});
+        let cityOptions = this.state.cityList.map( item => { return {label:item.name,value:item.id}});
         return(
             <div className='row'>
                 <Dropdown name="client_type" label="Account Type" hasError={this.clientValidator.hasError('client_type')} options={accountTypesOption} value={data.client_type} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-3"  disable={disibaleEdit}/>
@@ -261,6 +299,13 @@ class CreateNewDeal extends Component {
                 <div className='col-md-12'></div>
                 <Input name="naics_code" label="NAICS Code" value={data.naics_code} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <div className='col-md-12'></div>
+                <div className='row'>
+                    <Dropdown name="country" label="Country" wraperClass="col-md-3" value={data.country} onChange={this.countryChangeHandler.bind(this)} options={countryOptions} />
+                    <Dropdown name="state" label="State" wraperClass="col-md-2" value={data.state} onChange={this.stateChangeHandler.bind(this)} options={stateOptions} />
+                    <Dropdown name="city" label="City" wraperClass="col-md-2" value={data.city} onChange={this.onClientChangeHandler.bind(this)}  options={cityOptions} />
+                    <Input name="zipcode" wraperClass="col-md-2" label="Zip code" value={data.zipcode} onChange = {this.onClientChangeHandler.bind(this)}/>
+                    <Input name="suitno" wraperClass="col-md-2" label="Suit no" value={data.suitno} onChange = {this.onClientChangeHandler.bind(this)}/>
+                </div>
                 <Input name="address" label="Address" inputType="textarea" value={data.address} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <Input name="details" label="Notes" inputType="textarea" value={data.details} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <Input name="industry_type" label="Industry type" value={data.industry_type} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
@@ -323,6 +368,38 @@ class CreateNewDeal extends Component {
             </div>
         )
     }
+    countryChangeHandler(event){
+        let allState = [];
+        this.props.location.state.forEach(element => {
+            if(element.country_id == event.target.value){
+                allState.push(element);
+            }
+        });
+        let dealWithClient = this.state.dealWithClient;
+        this.setState({
+            dealWithClient:{
+                ...dealWithClient,
+                [event.target.name]:event.target.value
+            },
+            stateList:allState
+        })
+    }
+    stateChangeHandler(event){
+        let allCity = [];
+        this.props.location.city.forEach(element => {
+            if(element.state_id == event.target.value){
+                allCity.push(element);
+            }
+        });
+        let dealWithClient = this.state.dealWithClient;
+        this.setState({
+            dealWithClient:{
+                ...dealWithClient,
+                [event.target.name]:event.target.value
+            },
+            cityList:allCity
+        })
+    }
     render() {
         let accountTypesOption = this.state.accountTypes.map( item => {
             return {
@@ -367,11 +444,11 @@ class CreateNewDeal extends Component {
                             <InputDatePicker wraperClass="col-xs-12 col-md-2" name="agreement_starting_date" inputClassName="agreement_starting_date" label="Agreement Starting Date" value={data.agreement_starting_date} onChange = {this.dateChangeHandler.bind(this)}/>
                             <InputDatePicker wraperClass="col-xs-12 col-md-2" name="agreement_end"  inputClassName="agreement_end" label="Agreement End Date" value={data.agreement_end} onChange = {this.dateChangeHandler.bind(this)}/>
                         </div>
-                        <h5 className='form_group_title'>Deal with client</h5>
+                        <h5 className='form_group_title'>Deal with Company</h5>
                         <div className='custom_checkbox_option'>
                             <span className= {!isExistingClient ? 'active' : ''} onClick={ (e) => { this.setState({isExistingClient:false,dealWithClient:{}}) }}>New Client</span><span  className= {isExistingClient ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingClient:true}) }}>Select existing client</span>
                         </div>
-                        <Dropdown disable={!this.state.isExistingClient}  name="deal_with_company" label="Deal With Client" id="deal_with_company" options={clients} value={data.deal_with_company} onChange = {this.onClientChangeHander.bind(this)}/>
+                        <Dropdown disable={!this.state.isExistingClient}  name="deal_with_company" label="Deal With Company" id="deal_with_company" options={clients} value={data.deal_with_company} onChange = {this.onClientChangeHander.bind(this)}/>
                         {this.getNewClientForm(accountTypesOption)}
                         <div className='custom_checkbox_option'>
                             <span className= {!isExistingProperty ? 'active' : ''} onClick={ (e) => { this.setState({isExistingProperty:false,property:{}}) }}>New Project</span><span  className= {isExistingProperty ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingProperty:true}) }}>Select existing project</span>
@@ -386,5 +463,16 @@ class CreateNewDeal extends Component {
         );
     }
 }
-
-export default MasterComponent( RsWithRouter(CreateNewDeal));
+const mapStateToProps = (props) => {
+    return {
+        location:props.location
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return({
+        setCountry: (country) => { dispatch({type:ActionTypes.SET_COUNTRY,payload:country})},
+        setState: (state) => { dispatch({type:ActionTypes.SET_STATE,payload:state})},
+        setCity: (city) => { dispatch({type:ActionTypes.SET_CITY,payload:city})},
+    })
+}
+export default MasterComponent( RsWithRouter( connect(mapStateToProps,mapDispatchToProps) (CreateNewDeal)));

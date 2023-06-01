@@ -88,9 +88,9 @@ class DealDetails extends Component {
                                 
                                 <div className='mt-3'>
                                     
-                                    <h2 className='section_title'>Projects Details</h2>
+                                    <h2 className='section_title'>Property Details</h2>
                                     <PropertyDetails details={deal ? deal.property  : null }/>
-                                    <h2 className='section_title'>Lead Details</h2>
+                                    <h2 className='section_title'>Company Details</h2>
                                     <CompanyDetailsTab details={deal ? deal.dealWithCompany  : null } />
                                     <h2 className='section_title'>Contacts</h2>
                                     <DealContacts deal={deal ? deal.deal : null} client={deal ? deal.dealWithCompany  : null }/>

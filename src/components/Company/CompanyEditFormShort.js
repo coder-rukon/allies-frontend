@@ -110,7 +110,12 @@ class CompanyEditFormShort extends Component {
                 allState.push(element);
             }
         });
+        let oldCompany = this.state.company;
         this.setState({
+            company:{
+                ...oldCompany,
+                [event.target.name]:event.target.value
+            },
             stateList:allState
         })
     }
@@ -121,7 +126,12 @@ class CompanyEditFormShort extends Component {
                 allCity.push(element);
             }
         });
+        let oldCompany = this.state.company;
         this.setState({
+            company:{
+                ...oldCompany,
+                [event.target.name]:event.target.value
+            },
             cityList:allCity
         })
     }
@@ -146,9 +156,10 @@ class CompanyEditFormShort extends Component {
                 <Input name="email" label="Email" value={data.email} onChange = {this.onChangeHandler.bind(this)}/>
                 <div className='row'>
                     <Dropdown name="country" label="Country" wraperClass="col-md-3" value={data.country} onChange={this.countryChangeHandler.bind(this)} options={countryOptions} />
-                    <Dropdown name="state" label="State" wraperClass="col-md-3" value={data.state} onChange={this.stateChangeHandler.bind(this)} options={stateOptions} />
-                    <Dropdown name="city" label="City" wraperClass="col-md-3" value={data.city} onChange={this.cityChangeHandler.bind(this)}  options={cityOptions} />
-                    <Input name="zipcode" wraperClass="col-md-3" label="Zip code" value={data.zipcode} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Dropdown name="state" label="State" wraperClass="col-md-2" value={data.state} onChange={this.stateChangeHandler.bind(this)} options={stateOptions} />
+                    <Dropdown name="city" label="City" wraperClass="col-md-2" value={data.city} onChange={this.onChangeHandler.bind(this)}  options={cityOptions} />
+                    <Input name="zipcode" wraperClass="col-md-2" label="Zip code" value={data.zipcode} onChange = {this.onChangeHandler.bind(this)}/>
+                    <Input name="suitno" wraperClass="col-md-2" label="Suit no" value={data.suitno} onChange = {this.onChangeHandler.bind(this)}/>
                 </div>
                 <div className='row'>
                     <Input name="address" wraperClass="col-md-6" label="Address" inputType="textarea" value={data.address} onChange = {this.onChangeHandler.bind(this)}/>
