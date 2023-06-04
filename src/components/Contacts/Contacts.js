@@ -106,7 +106,6 @@ class Contacts extends Component {
         )
     }
     render() {
-        console.log('this.state.contacts',this.state.contacts)
         return (
             <div className='contacts_list_section'>
                 {
