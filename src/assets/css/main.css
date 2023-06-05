@@ -225,7 +225,8 @@ body {
         line-height: 50px;
         font-weight: 300;
         border-radius: 50%;
-        background: #f4932c; }
+        background: #f4932c;
+        text-transform: uppercase; }
     .main_header_section .widgets_lists .dropdown_widget .dropdown_items {
       display: none;
       position: absolute;

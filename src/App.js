@@ -12,6 +12,7 @@ import Welcome from './pages/Welcome';
 import CreateNewDeal from './pages/CreateNewDeal';
 import DealDetails from './pages/DealDetails';
 import DealArchive from './pages/DealArchive';
+import MyProfile from './pages/MyProfile';
 class App extends Component {
     render() {
         return (
@@ -30,6 +31,7 @@ class App extends Component {
                     <Route path="/accounts" element={<AccountsPage />}/>
                     <Route path="/accounts/:account_type_id" element={<AccountsPage />}/>
                     <Route path="/company/:id/:page" element={<CompanyDetails />}/>
+                    <Route path="/my-profile" element={<MyProfile />}/>
                     
                 </Routes>
             </div>
