@@ -14,7 +14,7 @@ import CompanyDetailsTab from '../components/Company/CompanyDetailsTab';
 import PropertyDetails from '../components/Property/PropertyDetails';
 import DealContacts from '../components/Deals/Contacts/DealContacts';
 import Notes from '../components/Notes/Notes';
-import DealTeam from '../components/DealTeam/DealTeam';
+import AccessLevels from '../components/AccessLevel/AccessLevels';
 
 class DealDetails extends Component {
     constructor(props){
@@ -96,7 +96,7 @@ class DealDetails extends Component {
                                     <h2 className='section_title'>Contacts</h2>
                                     <DealContacts deal={deal ? deal.deal : null} client={deal ? deal.dealWithCompany  : null }/>
                                     <h2 className='section_title'>Team</h2>
-                                    <DealTeam/>
+                                    <AccessLevels source="deal" integrator={deal.deal.id }/>
                                 </div>
                             </div>
                             <div className='col-xs-12 col-md-4'>

@@ -37,6 +37,7 @@ class Login extends Component {
         let api = Api;
         let that = this;
         let data = this.state.data;
+        data.device_name = Settings.device_name;
         api.axios().post('/login',data).then(res => {
             if(res.data.status === true){
                 Helper.alert(res.data.message);
@@ -58,7 +59,6 @@ class Login extends Component {
     }
     render() {
         let data = this.state.data;
-        console.log(this.props)
         return (
             <LoginRegister>
                 { this.state.isLoading ? <SimpleLoader /> : ''}

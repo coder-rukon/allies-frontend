@@ -24,6 +24,7 @@ class AlliesGrid extends Component {
             animateRows: true, // have rows animate to new positions when sorted
             onGridReady : this.onGridReady.bind(this),
             onRowClicked: this.onRowClicked.bind(this),
+            onCellClicked: this.onCellClicked.bind(this),
             onFirstDataRendered: this.onFirstDataRendered.bind(this),
           };
         var eGridDiv = document.getElementById(this.id);
@@ -40,6 +41,11 @@ class AlliesGrid extends Component {
     onRowClicked(event){
         if(this.props.onRowClick && typeof this.props.onRowClick === 'function'){
             this.props.onRowClick(event)
+        }
+    }
+    onCellClicked(event){
+        if(this.props.onCellClicked && typeof this.props.onCellClicked === 'function'){
+            this.props.onCellClicked(event)
         }
     }
     render() {

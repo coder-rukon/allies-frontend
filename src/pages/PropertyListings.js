@@ -5,6 +5,7 @@ import MasterComponent from '../components/Layout/MasterComponent';
 import CreateProperty from '../components/Property/CreateProperty';
 import PropertyArchive from '../components/Property/PropertyArchive';
 import EditProperty from '../components/Property/EditProperty';
+import AccessLevels from '../components/AccessLevel/AccessLevels';
 
 class PropertyListings extends Component {
     displayPage(propertyId){
@@ -13,7 +14,15 @@ class PropertyListings extends Component {
         }else if(propertyId == 'create'){
             return <CreateProperty  {...this.props}/>
         }else{
-            return <EditProperty  {...this.props} id={propertyId} />
+            return(
+                <>
+                    <EditProperty  {...this.props} id={propertyId} />
+                    <div className='container'>
+                        <h2 className='section_title'>Team Access</h2>
+                        <AccessLevels source="property" integrator={propertyId }/>
+                    </div>
+                </>
+            )
         }
     }
     render() {

@@ -9,6 +9,7 @@ import TabNav from '../components/widget/TabNav';
 import FileUploader from '../components/FileUploader/FileUploader';
 import SeconderyHeader from '../components/Layout/SeconderyHeader';
 import CompanyDeals from '../components/Company/CompanyDeals';
+import CompanyTeam from '../components/Company/CompanyTeam';
 
 class CompanyDetails extends Component {
     constructor(props){
@@ -29,7 +30,10 @@ class CompanyDetails extends Component {
             return <CompanyDeals deal_id={id}/>
         }else if(page =='contacts'){
             return <CompanyContactsList id={id} />
-        }else{
+        }else if(page =='team'){
+            return <CompanyTeam id={id} />
+        }
+        else{
             return <>404</>
         }
     }
@@ -39,6 +43,7 @@ class CompanyDetails extends Component {
             {name:'Files',id:"files"},
             {name:'Contacts',id:"contacts"},
             {name:'Deals',id:"deals"},
+            {name:'Team Access',id:"team"},
         ]
         let companyId = this.props.rs_router.params.id;
         return (

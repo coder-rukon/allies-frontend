@@ -4,6 +4,7 @@ import MyAccountWidget from './MyAccountWidget';
 import { connect } from 'react-redux';
 import ActionTypes from '../../actions/ActionsTypes';
 import Api from '../Api';
+import SuperAdminMenu from './SuperAdminMenu';
 
 class Header extends Component {
     constructor(props){
@@ -36,6 +37,7 @@ class Header extends Component {
                                 <li><Link to="/property/all"> <span className='label'>Property</span></Link></li>
                                 <li><Link to="/deals-pipeline/all"> <span className='label'>Deal Pipeline</span></Link></li>
                                 <li><Link to="/deal-archive"> <span className='label'>Archive Deal's</span></Link></li>
+                                <SuperAdminMenu/>
                                 <li><Link to="/deal/new"> <span className='btn rs_btn'>New Deal</span></Link></li>
                             </ul>
                             <div className='widgets_lists'>

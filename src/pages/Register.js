@@ -34,6 +34,7 @@ class Register extends Component {
         let api = Api;
         let that = this;
         let data = this.state.data;
+        data.device_name = Settings.device_name;
         api.axios().post('/register',data).then(res => {
             that.setState({
                 message:res.data.message,

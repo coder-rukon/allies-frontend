@@ -142,6 +142,7 @@ body{
             font-weight: 500;
             padding: 0 15px;
             overflow: hidden;
+            text-decoration: none;
         }
         li a .label{float: left;}
         li a .icon{
@@ -695,7 +696,7 @@ body{
     background-color: #1d3c4e;
     padding:20px 0;
     color:#fff;
-    
+    margin-top: 50px;
     .copy_wraper{
         justify-content: space-between;
         p{
@@ -722,4 +723,26 @@ body{
     width: 20px;
     height: auto;
     cursor:pointer;
+}
+.access_list{
+    .access_actions{
+        text-align: right;
+        overflow: hidden;
+        .delete_btn{
+            background: $dangerColor;
+            border-color: $dangerColor;
+            width: auto;
+            float: right;
+            padding: 5px 10px;
+            color: #fff;
+            opacity: 1;
+            transition: all .5s;
+            margin: 1px auto;
+            display: block;
+         
+        }
+    }
+}
+.select2-container .select2-selection--single{
+    height: 40px !important;
 }

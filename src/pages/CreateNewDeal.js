@@ -446,12 +446,12 @@ class CreateNewDeal extends Component {
                         </div>
                         <h5 className='form_group_title'>Deal with Company</h5>
                         <div className='custom_checkbox_option'>
-                            <span className= {!isExistingClient ? 'active' : ''} onClick={ (e) => { this.setState({isExistingClient:false,dealWithClient:{}}) }}>New Client</span><span  className= {isExistingClient ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingClient:true}) }}>Select existing client</span>
+                            <span className= {!isExistingClient ? 'active' : ''} onClick={ (e) => { this.setState({isExistingClient:false,dealWithClient:{}}) }}>New Company</span><span  className= {isExistingClient ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingClient:true}) }}>Select existing company</span>
                         </div>
                         <Dropdown disable={!this.state.isExistingClient}  name="deal_with_company" label="Deal With Company" id="deal_with_company" options={clients} value={data.deal_with_company} onChange = {this.onClientChangeHander.bind(this)}/>
                         {this.getNewClientForm(accountTypesOption)}
                         <div className='custom_checkbox_option'>
-                            <span className= {!isExistingProperty ? 'active' : ''} onClick={ (e) => { this.setState({isExistingProperty:false,property:{}}) }}>New Project</span><span  className= {isExistingProperty ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingProperty:true}) }}>Select existing project</span>
+                            <span className= {!isExistingProperty ? 'active' : ''} onClick={ (e) => { this.setState({isExistingProperty:false,property:{}}) }}>New Property</span><span  className= {isExistingProperty ? 'active' : ''}  onClick={ (e) => { this.setState({isExistingProperty:true}) }}>Select existing property</span>
                         </div>
                         <Dropdown disable={!isExistingProperty} name="property" label="Deal With Property" id="deal_property" options={property} value={data.property} onChange = {this.onChangePropertyHandler.bind(this)}/>
                         { this.getProjectForms() }
