@@ -14,18 +14,20 @@ class AlliesGrid extends Component {
         }
     }
     initGrid(){
+        let settings = this.props.settings ? this.props.settings : {};
         let gridOptions = {
             columnDefs: this.props.header,
             pagination:true,
             paginationPageSize:50,
             rowData:this.props.data ? this.props.data : null,
             defaultColDef: {sortable: true, filter: true,resizable: true},
-            rowSelection: 'single', // allow rows to be selected
+            rowSelection: 'multiple', // allow rows to be selected single
             animateRows: true, // have rows animate to new positions when sorted
             onGridReady : this.onGridReady.bind(this),
             onRowClicked: this.onRowClicked.bind(this),
             onCellClicked: this.onCellClicked.bind(this),
             onFirstDataRendered: this.onFirstDataRendered.bind(this),
+            ...settings
           };
         var eGridDiv = document.getElementById(this.id);
         this.gridObject = new Grid(eGridDiv, gridOptions);
@@ -51,6 +53,9 @@ class AlliesGrid extends Component {
     render() {
         return (
             <div className='rs_grid_wraper'>
+                {
+                    this.props.actions_buttons ? <div className='grid_actions_buttons'>{this.props.actions_buttons()}</div> : ''
+                }
                 <div id={this.id} className="ag-theme-alpine" style={{height:this.props.height ? this.props.height : '600px'}}></div>
             </div>
         );

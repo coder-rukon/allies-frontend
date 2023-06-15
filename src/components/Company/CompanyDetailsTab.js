@@ -55,6 +55,9 @@ class CompanyDetailsTab extends Component {
         return <CompanyEditFormShort id = {company.id} onSaveSuccess={this.onSaveSuccess.bind(this)}/>
     }
     getViewMode(company){
+        let meta = company && company.meta ? JSON.parse(company.meta) : {};
+        console.log(meta,'company.meta')
+        let social = meta.social ? meta.social : {};
         return(
             <>
                 <table className="table table-striped">
@@ -68,6 +71,16 @@ class CompanyDetailsTab extends Component {
                             <td style={{width:'150px'}}>Contact name</td>
                             <td style={{width:'10px'}}>:</td>
                             <td>{company.contact_name}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Title</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.title}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Contact owner</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.contact_owner}</td>
                         </tr>
                         <tr>
                             <td style={{width:'150px'}}>Office phone</td>
@@ -84,10 +97,77 @@ class CompanyDetailsTab extends Component {
                             <td style={{width:'10px'}}>:</td>
                             <td><a href="{company.website}">{company.website}</a></td>
                         </tr>
+                        
+                        <tr>
+                            <td style={{width:'150px'}}>Country</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.country}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style={{width:'150px'}}>State</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.state}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style={{width:'150px'}}>City</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.city}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style={{width:'150px'}}>Zip code</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.zipcode}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td style={{width:'150px'}}>Suite no </td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.suitno}</td>
+                        </tr>
+
+
                         <tr>
                             <td style={{width:'150px'}}>Address</td>
                             <td style={{width:'10px'}}>:</td>
                             <td>{company.address}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Naics code</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.naics_code}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Industry type</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.industry_type}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Sub industry type</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.sub_industry_type}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Notes</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{company.notes}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Facebook</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{social.facebook}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Twitter</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{social.twitter}</td>
+                        </tr>
+                        <tr>
+                            <td style={{width:'150px'}}>Linkedin</td>
+                            <td style={{width:'10px'}}>:</td>
+                            <td>{social.linkedin}</td>
                         </tr>
                     </tbody>
                 </table>

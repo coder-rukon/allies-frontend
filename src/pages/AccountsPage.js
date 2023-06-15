@@ -7,6 +7,9 @@ import AlliesGrid from '../components/Grid/AlliesGrid';
 import RsWithRouter from '../components/Inc/RsWithRouter';
 import MasterComponent from '../components/Layout/MasterComponent';
 import SimpleLoader from '../components/widget/SimpleLoader';
+import Dropdown from '../components/Forms/Dropdown';
+import Helper from '../components/Helper';
+import Settings from '../components/Settings';
 
 class AccountsPage extends Component {
     constructor(props){
@@ -14,9 +17,11 @@ class AccountsPage extends Component {
         this.gridObj = null;
         this.state = {
             isLoading:false,
+            status:'active',
             isPopupOpen:false
         }
     }
+    
     onGridReady(grid){
         this.gridObj = grid;
         this.loadData();
@@ -40,7 +45,7 @@ class AccountsPage extends Component {
         if(accountTypeId === 'all'){
             url = '/account/all';
         }
-        api.axios().get(url).then(res => {
+        api.axios().get(url+'?status='+this.state.status).then(res => {
             that.setState({
                 isLoading:false
             })
@@ -61,16 +66,65 @@ class AccountsPage extends Component {
             this.loadAccountByAccountType(accountTypeId)
         }
     }
+    onStatusChange(e){
+        let that = this;
+        this.setState({
+            status:e.target.value
+        },() => {
+            that.loadData();
+        })
+    }
+    changeCompanyStates(status,event){
+        let idLsit = [];
+        let selectedRows = this.gridObj.api.getSelectedRows();
+        if(selectedRows.length <= 0){
+            return;
+        }
+        selectedRows.forEach(company => {
+            idLsit.push(company.id)
+        });
+        let api = Api,that = this;
+        api.setUserToken();
+        let data = {
+            id: idLsit.toString(),
+            status:status
+        }
+        api.axios().post('/account/chage-status',data).then(res => {
+            Helper.alert(res.data.message)
+            that.loadData();
+        })
+    }
+    actionsButtons(){
+        let statusOptions = [
+            {label:'Active',value:'active'},
+            {label:'Archive',value:'archive'},
+        ]
+        return(
+            <div className='d-flex gap-4'>
+                <div>
+                    <Dropdown  options={statusOptions} name="account_status" value={this.state.status} onChange={this.onStatusChange.bind(this)}/>
+                </div>
+                <div>
+                    <Button title="Archive"onClick={ this.changeCompanyStates.bind(this,'archive')} />
+                </div>
+                <div>
+                    <Button title="Active" onClick={ this.changeCompanyStates.bind(this,'active')} />
+                </div>
+            </div>
+        )
+    }
     render() {
         let headerTitles  = [
-            { field: "company_name", headerName:'Company name' },
+            { field: "company_name", headerName:'Company name',checkboxSelection: true},
             { field: "contact_name", headerName:'Contact Name' },
             { field: "office_phone_number", headerName:'Contact Number' },
             { field: "naics_code", headerName:'NAICS Code' },
-            { field: "contact_owner", headerName:'Contact owner' },
             { field: "email", headerName:'Email' },
             { field: "address", headerName:'Address' }
           ]
+        let settings = {
+        }
+        
         return (
             <div className="accounts_page">
                 <div className='secondery_header_wraper'>
@@ -80,7 +134,7 @@ class AccountsPage extends Component {
                                 <AccountsTabs/>
                             </div>
                             <div className='right_items'>
-                                <Button title="+ Create new account" onClick={ e => this.openCreateAccountPopup(e)} className=""/>
+                                <Button title="+ Create new company" onClick={ e => this.openCreateAccountPopup(e)} className=""/>
                             </div>
                         </div>
                     </div>
@@ -88,7 +142,7 @@ class AccountsPage extends Component {
                 { this.state.isLoading ? <SimpleLoader /> : "" }
                 <div className='grid_area'>
                     <div className='container-fluid'>
-                        <AlliesGrid header={headerTitles} onRowClick={this.onRowClick.bind(this)} onGridReady={this.onGridReady.bind(this)}/>
+                        <AlliesGrid actions_buttons = {this.actionsButtons.bind(this)} header={headerTitles} onRowClick={this.onRowClick.bind(this)} onGridReady={this.onGridReady.bind(this)} settings={settings}/>
                         {this.state.isPopupOpen ? <NewAccountPopup onClose={ e => { this.loadData(); this.setState({isPopupOpen:false}) }}/> : '' }
                     </div>
                 </div>

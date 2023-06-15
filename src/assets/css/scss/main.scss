@@ -718,6 +718,13 @@ body{
         background-color: #f2f6f7;
         
     }
+    .grid_actions_buttons{
+        margin-bottom: 20px;
+        .rs_btn {
+            padding: 4px 15px;
+            font-size: 14px;
+        }
+    }
 }
 .del_btn_icon{
     width: 20px;

@@ -53,6 +53,14 @@ let Helper = {
     },
     formateDate(dateString){
         return dateString;
+    },
+    getPropertyType(){
+        let propertyTypes = [
+            {label:'Industrial' , value:"industrial"},
+            {label:'Office' , value:"office"},
+            {label:'Retail' , value:"retail"}
+        ]
+        return propertyTypes;
     }
 }
 export default Helper;

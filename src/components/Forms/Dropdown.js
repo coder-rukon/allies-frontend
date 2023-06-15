@@ -25,7 +25,7 @@ class Dropdown extends Component {
         if(this.props.disable){
             $('#'+this.id).select2({disabled:true});
         }else{
-            $('#'+this.id).select2({disabled:false});
+            $('#'+this.id).select2({disabled:false,placeholder:'Please select'});
         }
     }
     componentWillUnmount(){
@@ -50,7 +50,7 @@ class Dropdown extends Component {
             props:props
         }
         return (
-            <select value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => { } : e => { } }>
+            <select  value={that.props.value ? that.props.value : ''} id ={this.id} name={props.name} className="form-control rs_chosen_dropdown" onChange={ props.onChange ? e => { } : e => { } }>
                 <option value={""}></option>
                 {
                     props.options.map( (item,key) => {

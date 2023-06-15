@@ -120,7 +120,7 @@ class EditProperty extends Component {
             <div className='secondery_header_wraper'>
                 <div className='container'>
                     <div className='secondery_header'>
-                        <Button to={'/property/all'} title="Back To All Projects" className="primary_border"/>
+                        <Button to={'/property/all'} title="Back To All Property" className="primary_border"/>
                         <Button  title="Delete" onClick={ this.deleteHandler.bind(this)} className="danger"/>
                     </div>
                 </div>
@@ -129,9 +129,12 @@ class EditProperty extends Component {
     }
     getForm(){
         let property = this.state.property;
+        let propertyTypes = Helper.getPropertyType()
         return(
             <div className='property_form'>
                 <DisplayErrors errors={this.state.errors}/>
+                <Dropdown name="property_type" label="Property Type" value={property.property_type} onChange={ this.onChangeHanlder.bind(this)} options={ propertyTypes }/>
+
                 <Input name="name" label="Project Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
                 <div className='row'>
                     <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onChangeHanlder.bind(this)}/></div>

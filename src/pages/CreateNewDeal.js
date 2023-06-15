@@ -286,7 +286,6 @@ class CreateNewDeal extends Component {
         let disibaleEdit = this.state.isExistingClient;
         let countryOptions = this.props.location.country.map( item => { return {label: item.name,value:item.id}});
         let stateOptions = this.state.stateList.map( item => { return {label:item.name,value:item.id}});
-        let cityOptions = this.state.cityList.map( item => { return {label:item.name,value:item.id}});
         return(
             <div className='row'>
                 <Dropdown name="client_type" label="Account Type" hasError={this.clientValidator.hasError('client_type')} options={accountTypesOption} value={data.client_type} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-3"  disable={disibaleEdit}/>
@@ -300,11 +299,11 @@ class CreateNewDeal extends Component {
                 <Input name="naics_code" label="NAICS Code" value={data.naics_code} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <div className='col-md-12'></div>
                 <div className='row'>
-                    <Dropdown name="country" label="Country" wraperClass="col-md-3" value={data.country} onChange={this.countryChangeHandler.bind(this)} options={countryOptions} />
-                    <Dropdown name="state" label="State" wraperClass="col-md-2" value={data.state} onChange={this.stateChangeHandler.bind(this)} options={stateOptions} />
-                    <Dropdown name="city" label="City" wraperClass="col-md-2" value={data.city} onChange={this.onClientChangeHandler.bind(this)}  options={cityOptions} />
-                    <Input name="zipcode" wraperClass="col-md-2" label="Zip code" value={data.zipcode} onChange = {this.onClientChangeHandler.bind(this)}/>
-                    <Input name="suitno" wraperClass="col-md-2" label="Suit no" value={data.suitno} onChange = {this.onClientChangeHandler.bind(this)}/>
+                    <Dropdown name="country" label="Country" wraperClass="col-md-3" value={data.country} onChange={this.countryChangeHandler.bind(this)} options={countryOptions} disable={disibaleEdit} />
+                    <Dropdown name="state" label="State" wraperClass="col-md-2" value={data.state} onChange={this.stateChangeHandler.bind(this)} options={stateOptions} disable={disibaleEdit} />
+                    <Input name="city" label="City" wraperClass="col-md-2" value={data.city} onChange={this.onClientChangeHandler.bind(this)}  disable={disibaleEdit} />
+                    <Input name="zipcode" wraperClass="col-md-2" label="Zip code" value={data.zipcode} onChange = {this.onClientChangeHandler.bind(this)} disable={disibaleEdit}/>
+                    <Input name="suitno" wraperClass="col-md-2" label="Suite no" value={data.suitno} onChange = {this.onClientChangeHandler.bind(this)} disable={disibaleEdit}/>
                 </div>
                 <Input name="address" label="Address" inputType="textarea" value={data.address} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
                 <Input name="details" label="Notes" inputType="textarea" value={data.details} onChange = {this.onClientChangeHandler.bind(this)} wraperClass="col-xs-12 col-md-6"  disable={disibaleEdit}/>
@@ -346,8 +345,10 @@ class CreateNewDeal extends Component {
         let isExistingProperty = this.state.isExistingProperty;
         let property = this.state.property;
         let disibaleEdit = this.state.isExistingProperty;
+        let propertyTypes = Helper.getPropertyType()
         return (
             <div className='property_form_wraper'>
+                <Dropdown disable={disibaleEdit} name="property_type" label="Property Type" value={property.property_type} onChange={ this.onPropertyChangeHandler.bind(this)} options={ propertyTypes }/>
                 <Input name="name" label="Name" value={property.name} onChange={ this.onPropertyChangeHandler.bind(this)}  disable={disibaleEdit}/>
                 <div className='row'>
                     <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onPropertyChangeHandler.bind(this)}  disable={disibaleEdit}/></div>

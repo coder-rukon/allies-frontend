@@ -113,7 +113,7 @@ class Contacts extends Component {
                 }
                 <div className='contacts_lists'>
                     {this.getForm()}
-                    { !this.state.visibleForm ? <div style={{textAlign:'right'}}><Button title="+" className="mb-3" onClick={e => { this.setState({visibleForm:true})}}/></div> : '' }
+                    { !this.state.visibleForm ? <div style={{textAlign:'right'}}><Button title="Create Contact" className="mb-3" onClick={e => { this.setState({visibleForm:true})}}/></div> : '' }
                     <table className="table table-striped">
                         <tbody>
                             <tr>

@@ -58,19 +58,22 @@ class CreateProperty extends Component {
         if(this.state.isLoading){
             return <SimpleLoader/>
         }
+        let propertyTypes = Helper.getPropertyType()
         return (
             <div className='property_create_page'>
                 <div className='secondery_header_wraper'>
                     <div className='container'>
                         <div className='secondery_header'>
-                            <Button to={'/property/all'} title="Back To All Projects" className="primary_border"/>
+                            <Button to={'/property/all'} title="Back To All Property" className="primary_border"/>
                         </div>
                     </div>
                 </div>
                 <div className='container'>
                     <div className='property_form'>
                         <DisplayErrors errors={this.state.errors}/>
-                        <Input name="name" label="Project Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
+                        <Dropdown name="property_type" label="Property Type" value={property.property_type} onChange={ this.onChangeHanlder.bind(this)} options={ propertyTypes }/>
+
+                        <Input name="name" label="Property Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
                         <div className='row'>
                             <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onChangeHanlder.bind(this)}/></div>
                             <div className='col-xs-12 col-sm-6'><Input name="zoning" label="Zoning"  value={property.zoning} onChange={ this.onChangeHanlder.bind(this)}/></div>
