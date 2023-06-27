@@ -39,6 +39,21 @@ class DealsPipelines extends Component {
             })
         })
     }
+    isVisible(stage){
+        let category = this.props.category;
+        if(category===null){
+            return true;
+        }
+        let SellerLandlordRepStage = [1,2,3,4,8,9,10];
+        let BuyerTenantRepStage = [1,2,3,5,6,8,9,10];
+        if((category == 1 || category == 2) && SellerLandlordRepStage.includes(stage.id)){
+            return true;
+        }
+        if((category == 3 || category == 4) && BuyerTenantRepStage.includes(stage.id)){
+            return true;
+        }
+        return false;
+    }
     render() {
         let dealStage = this.props.dealStage.stage;
 
@@ -47,7 +62,8 @@ class DealsPipelines extends Component {
                 <div className='deals_piplelins_row'>
                     {
                        this.state.isLoading ? <SimpleLoader/> : dealStage.map( (stage,key ) => {
-                            return <DealPipleLineItem reloadDealsPage={ this.realodDeals.bind(this)} key={key} stage ={stage} category={this.props.category} />
+                            
+                            return this.isVisible(stage) ? <DealPipleLineItem reloadDealsPage={ this.realodDeals.bind(this)} key={key} stage ={stage} category={this.props.category} /> : ''
                         })
                     }
                 </div>

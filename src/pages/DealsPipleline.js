@@ -33,12 +33,11 @@ class DealsPipleline extends Component {
                                 <CategoryTab urlPrefix='/deals-pipeline'/>
                             </div>
                             <div className='right_items'>
-                                <Button title="+ Create new deal" onClick={ e => this.openDealCreatePopup(e)} className=""/>
+                                <Button to='/deal/new'  title="+ Create new deal" className=""/>
                             </div>
                         </div>
                     </div>
                 </div>
-                {this.state.isPopupOpen ? <NewDealsPopups onClose={ e => { this.setState({isPopupOpen:false}) }}/> : '' }
                 <div className='container-fluid'>
                     <DealsPipelines category={category}/>
                 </div>

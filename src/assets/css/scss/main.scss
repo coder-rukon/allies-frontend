@@ -92,7 +92,21 @@ body{
         }
     }
 }
+.super_user_header{
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    .suh_row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .rs_btn {
+        padding: 5px 20px;
+        font-size: 14px;
+    }
 
+}
 .main_header_section{
     background-color:  #fff;
     padding: 20px 0;

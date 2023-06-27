@@ -153,6 +153,18 @@ body {
       font-weight: 500;
       text-decoration: none; }
 
+.super_user_header {
+  background: #333;
+  color: #fff;
+  padding: 10px 0; }
+  .super_user_header .suh_row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .super_user_header .rs_btn {
+    padding: 5px 20px;
+    font-size: 14px; }
+
 .main_header_section {
   background-color: #fff;
   padding: 20px 0;

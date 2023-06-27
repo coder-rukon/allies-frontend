@@ -17,6 +17,25 @@ let Helper = {
             $.notify(message, defaultOptions);
         }
     },
+    confirmMe(confirmFunction,bodyMessage,cancelFunction='',title){
+        $('<div>'+bodyMessage+'</div>').dialog({
+             modal: true,
+             zIndex: 30005,
+             title:title,
+             buttons: {
+                "Yes": function() {
+                    confirmFunction()
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    if(cancelFunction){
+                        cancelFunction()
+                    }
+                  $( this ).dialog( "close" );
+                }
+            }
+        });
+    },
     setCookie(cname, cvalue, exdays) {
         var d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));

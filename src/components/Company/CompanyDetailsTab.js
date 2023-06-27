@@ -11,7 +11,7 @@ class CompanyDetailsTab extends Component {
             company:{},
             id:this.props.id,
             isLoading:false,
-            isEditing:false
+            isEditing:true
         }
     }
     componentDidMount(){

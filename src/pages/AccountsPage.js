@@ -124,7 +124,7 @@ class AccountsPage extends Component {
           ]
         let settings = {
         }
-        
+        let accountTypeId = this.props.rs_router.params.account_type_id ? this.props.rs_router.params.account_type_id : null;
         return (
             <div className="accounts_page">
                 <div className='secondery_header_wraper'>
@@ -143,7 +143,7 @@ class AccountsPage extends Component {
                 <div className='grid_area'>
                     <div className='container-fluid'>
                         <AlliesGrid actions_buttons = {this.actionsButtons.bind(this)} header={headerTitles} onRowClick={this.onRowClick.bind(this)} onGridReady={this.onGridReady.bind(this)} settings={settings}/>
-                        {this.state.isPopupOpen ? <NewAccountPopup onClose={ e => { this.loadData(); this.setState({isPopupOpen:false}) }}/> : '' }
+                        {this.state.isPopupOpen ? <NewAccountPopup defaultCompanyType ={accountTypeId} onClose={ e => { this.loadData(); this.setState({isPopupOpen:false}) }}/> : '' }
                     </div>
                 </div>
             </div>

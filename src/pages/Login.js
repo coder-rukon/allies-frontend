@@ -8,6 +8,8 @@ import RsWithRouter from '../components/Inc/RsWithRouter';
 import LoginRegister from '../components/Layout/LoginRegister';
 import Settings from '../components/Settings';
 import SimpleLoader from '../components/widget/SimpleLoader';
+import { connect } from 'react-redux';
+import ActionTypes from '../actions/ActionsTypes';
 
 class Login extends Component {
     constructor(props){
@@ -40,6 +42,8 @@ class Login extends Component {
         data.device_name = Settings.device_name;
         api.axios().post('/login',data).then(res => {
             if(res.data.status === true){
+                that.props.setUser(res.data.user)
+                Helper.setCookie(Settings.userTokenKey,res.data.token,7)
                 Helper.alert(res.data.message);
                 that.props.rs_router.navigate('/accounts')
             }
@@ -48,9 +52,6 @@ class Login extends Component {
                 messageType:res.data.status,
                 isLoading:false
             })
-            if(res.data.status){
-                Helper.setCookie(Settings.userTokenKey,res.data.token,7)
-            }
         }).catch(error => {
             that.setState({
                 isLoading:false
@@ -75,5 +76,12 @@ class Login extends Component {
         );
     }
 }
-
-export default  RsWithRouter(Login);
+let mapStateToProps = (state) =>{
+    return {}
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setUser: (user) => { dispatch({type:ActionTypes.SET_USER, payload:user})}
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps) (RsWithRouter(Login));

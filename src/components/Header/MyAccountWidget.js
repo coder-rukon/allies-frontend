@@ -4,11 +4,13 @@ import Api from '../Api';
 import Helper from '../Helper';
 import RsWithRouter from '../Inc/RsWithRouter';
 import { connect } from 'react-redux';
+import Settings from '../Settings';
 
 class MyAccountWidget extends Component {
     logOut(e){
         let api = Api;
         api.setUserToken();
+        Helper.setCookie(Settings.secondUserTokenKey,'',100);
         let that = this;
         api.axios().get('/logout').then(res=>{
             if(res.data.status === true){
