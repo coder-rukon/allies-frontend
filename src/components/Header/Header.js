@@ -6,6 +6,8 @@ import ActionTypes from '../../actions/ActionsTypes';
 import Api from '../Api';
 import SuperAdminMenu from './SuperAdminMenu';
 import SuperUserHeader from './SuperUserHeader';
+import Icon from '../widget/Icon';
+import SearchBox from '../widget/SearchBox';
 
 class Header extends Component {
     constructor(props){
@@ -29,19 +31,26 @@ class Header extends Component {
             <>
                 <SuperUserHeader/>
                 <div className='main_header_section'>
-                    <div className='container'>
+                    <div className='container-fluid'>
                         <div className='header_main_row'>
                             <div className='left_section'>
-                                <Link to="/" className='logo'><img src="/images/logo.png" alt="logo"/></Link>
+                                <Link to="/" className='logo'><img src="/images/logo-header.png" alt="logo"/></Link>
                             </div>
                             <div className='right_section'>
+                                <div className='s_box_h_wraper'><SearchBox/></div>
+                                <div className='divider divider_sbox'></div>
                                 <ul className='main_nav'>
-                                    <li><Link to="/accounts/all"> <span className='label'>Company</span></Link></li>
-                                    <li><Link to="/property/all"> <span className='label'>Property</span></Link></li>
-                                    <li><Link to="/deals-pipeline/all"> <span className='label'>Deal Pipeline</span></Link></li>
-                                    <li><Link to="/deal-archive"> <span className='label'>Archive Deal's</span></Link></li>
+                                    <li><Link to="/accounts/all" className='active new_link'><Icon className='uil-users-alt'/> <span className='label'><span className='plus_sin'>+</span> Company</span></Link></li>
+                                    <li><Link to="/property/create"  className='active new_link'><Icon className='uil-building'/>  <span className='label'><span className='plus_sin'>+</span> Property</span></Link></li>
+                                    <li><Link to="/deal/new"  className='active new_link'><Icon className='uil-file-plus-alt'/><span className='label'><span className='plus_sin'>+</span> Deal</span></Link></li>
+                                    <li className='divider'></li>
+                                    
+                                    <li><Link to="/accounts/all"><Icon className='uil-users-alt'/> <span className='label'>Company</span></Link></li>
+                                    <li><Link to="/property/all"><Icon className='uil-building'/>  <span className='label'>Property</span></Link></li>
+                                    <li><Link to="/deals-pipeline/all"><Icon className='uil-file-plus-alt'/><span className='label'>Deals</span></Link></li>
+                                    <li><Link to="/deal-archive"><Icon className='uil-archive-alt'/>  <span className='label'>Archive</span></Link></li>
+                                    <li className='divider'></li>
                                     <SuperAdminMenu/>
-                                    <li><Link to="/deal/new"> <span className='btn rs_btn'>New Deal</span></Link></li>
                                 </ul>
                                 <div className='widgets_lists'>
                                     <MyAccountWidget/>

@@ -108,8 +108,9 @@ body{
 
 }
 .main_header_section{
-    background-color:  #fff;
+    background-color:  #062C3E;
     padding: 20px 0;
+    margin-bottom: 30px;
     position: static;
     z-index: 100;
     .logo{
@@ -126,10 +127,52 @@ body{
             max-width: 100%;
         }
     }
+    .search_box_section{
+        display: block;
+        margin: 0;
+        padding:0;
+        margin-top: 9px;
+        .sbox_input_wraper{
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            .sbox_input{
+                display: block;
+                width: 450px;
+                height: 40px;
+                border-radius: 50px;
+                color: #9CA3AF;
+                background-color: #4B5563;
+                border-color: #4B5563;
+                box-shadow: none !important;
+                background-position: 15px center;
+                background-repeat: no-repeat;
+                padding-left: 50px;
+                font-size: 16px;
+                font-weight: 400;
+            }
+            .sbox_input::placeholder{
+                color: #9CA3AF;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+    .divider_sbox{
+        margin:5px 0 0 0 !important;
+    }
     .header_main_row{
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    .divider{
+        width: 1px;
+        background: #9CA3AF;
+        display: block;
+        height: 48px;
+        margin: auto 15px;
     }
     .header_main_row .left_section{}
     .header_main_row .right_section{
@@ -152,26 +195,32 @@ body{
         }
         li a{
             display: block;
-            color: $textColor;
+            color: #fff;
             font-weight: 500;
-            padding: 0 15px;
+            padding: 0 18px;
             overflow: hidden;
             text-decoration: none;
-        }
-        li a .label{float: left;}
-        li a .icon{
-            float: left;
-            color: #fff;
-            background: $primaryColor;
-            display: block;
-            min-width: 26px;
             text-align: center;
-            border-radius: 20px;
-            padding: 5px;
-            margin-left: 5px;
-            font-size: 12px;
-            line-height: 15px;
+
         }
+        li:first-child a{
+            padding-left: 0;
+        }
+        li a .label{
+            font-size: 14px;
+            font-weight: 400;
+            display: block;
+            text-align: center;
+        }
+        li a .allies_icon{
+            display: block;
+            font-size: 26px;
+            height: 37px;
+        }
+        li a.active{
+            color:$primaryColor;
+        }
+
     }
     .widgets_lists{
 

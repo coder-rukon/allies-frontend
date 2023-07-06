@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Icon from '../widget/Icon';
 
 class SuperAdminMenu extends Component {
     render() {
@@ -8,7 +9,10 @@ class SuperAdminMenu extends Component {
             return <></>
         }
         return (
-            <li><Link to="/users"> <span>All users</span></Link></li>
+            <>
+                <li><Link to="/users"><Icon className='uil-users-alt'/> <span>All users</span></Link></li>
+                <li className='divider'></li>
+            </>
         );
     }
 }

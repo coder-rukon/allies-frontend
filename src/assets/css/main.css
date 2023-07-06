@@ -73,7 +73,7 @@
       display: block; }
 
 body {
-  font-family: "Montserrat";
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 14px;
   color: #2f3432;
@@ -104,10 +104,10 @@ body {
     font-size: 14px;
     display: block;
     margin-bottom: 5px;
-    font-family: "Montserrat"; }
+    font-family: "Roboto", sans-serif; }
   .form-group .input_placeholder,
   .form-group .form-control {
-    font-family: "Montserrat";
+    font-family: "Roboto", sans-serif;
     border-radius: 2px;
     height: 40px;
     margin: 0;
@@ -166,8 +166,9 @@ body {
     font-size: 14px; }
 
 .main_header_section {
-  background-color: #fff;
+  background-color: #062C3E;
   padding: 20px 0;
+  margin-bottom: 30px;
   position: static;
   z-index: 100; }
   .main_header_section .logo {
@@ -182,10 +183,45 @@ body {
       padding: 0;
       width: 150px;
       max-width: 100%; }
+  .main_header_section .search_box_section {
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-top: 9px; }
+    .main_header_section .search_box_section .sbox_input_wraper {
+      display: block;
+      position: relative;
+      overflow: hidden; }
+      .main_header_section .search_box_section .sbox_input_wraper .sbox_input {
+        display: block;
+        width: 450px;
+        height: 40px;
+        border-radius: 50px;
+        color: #9CA3AF;
+        background-color: #4B5563;
+        border-color: #4B5563;
+        box-shadow: none !important;
+        background-position: 15px center;
+        background-repeat: no-repeat;
+        padding-left: 50px;
+        font-size: 16px;
+        font-weight: 400; }
+      .main_header_section .search_box_section .sbox_input_wraper .sbox_input::placeholder {
+        color: #9CA3AF;
+        font-size: 16px;
+        font-weight: 400; }
+  .main_header_section .divider_sbox {
+    margin: 5px 0 0 0 !important; }
   .main_header_section .header_main_row {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+  .main_header_section .divider {
+    width: 1px;
+    background: #9CA3AF;
+    display: block;
+    height: 48px;
+    margin: auto 15px; }
   .main_header_section .header_main_row .right_section {
     display: flex;
     margin: 0;
@@ -204,25 +240,25 @@ body {
       float: left; }
     .main_header_section .main_nav li a {
       display: block;
-      color: #2f3432;
-      font-weight: 500;
-      padding: 0 15px;
-      overflow: hidden;
-      text-decoration: none; }
-    .main_header_section .main_nav li a .label {
-      float: left; }
-    .main_header_section .main_nav li a .icon {
-      float: left;
       color: #fff;
-      background: #f4932c;
+      font-weight: 500;
+      padding: 0 18px;
+      overflow: hidden;
+      text-decoration: none;
+      text-align: center; }
+    .main_header_section .main_nav li:first-child a {
+      padding-left: 0; }
+    .main_header_section .main_nav li a .label {
+      font-size: 14px;
+      font-weight: 400;
       display: block;
-      min-width: 26px;
-      text-align: center;
-      border-radius: 20px;
-      padding: 5px;
-      margin-left: 5px;
-      font-size: 12px;
-      line-height: 15px; }
+      text-align: center; }
+    .main_header_section .main_nav li a .allies_icon {
+      display: block;
+      font-size: 26px;
+      height: 37px; }
+    .main_header_section .main_nav li a.active {
+      color: #f4932c; }
   .main_header_section .widgets_lists .dropdown_widget {
     position: relative; }
     .main_header_section .widgets_lists .dropdown_widget .dropdown_widget_controller {
