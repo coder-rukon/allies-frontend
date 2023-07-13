@@ -7,15 +7,34 @@ import Helper from '../Helper';
 import Alert from '../widget/Alert';
 import DisplayErrors from '../widget/DisplayErrors';
 import SimpleLoader from '../widget/SimpleLoader';
+import Settings from '../Settings';
 
 class CreateProperty extends Component {
     constructor(props) {
         super(props);
         this.state = {
             property:{},
+            property_types:[],
             errors:{},
             isLoading:false
         }
+    }
+    componentDidMount(){
+        this.loadPropertyTypes();
+    }
+    loadPropertyTypes(){
+        let api = Api;
+        let that = this;
+        that.setState({
+            isLoading:true
+        })
+        api.setUserToken();
+        api.axios().get(Settings.apiUrl+'/property/property-types').then(res=>{
+            that.setState({
+                isLoading:false,
+                property_types:res.data.data
+            }) 
+        })
     }
     
     onSaveHandler(){
@@ -53,26 +72,39 @@ class CreateProperty extends Component {
             }
         })
     }
+    getField(pField){
+        let property = this.state.property;
+        let propertyType = property
+        return <div className={ pField.inputWraperClass ? pField.inputWraperClass : 'col-xs-12 col-sm-4'}><Input {...pField} name={pField.name} label={pField.label} value={property[pField.name]} onChange={ this.onChangeHanlder.bind(this)}/></div>
+    }
     render() {
         let property = this.state.property;
         if(this.state.isLoading){
             return <SimpleLoader/>
         }
-        let propertyTypes = Helper.getPropertyType()
+        let propertyTypes = this.state.property_types;
+        let propertyFields = Helper.getPropertyFields();
+        console.log('property',property)
         return (
             <div className='property_create_page'>
-                <div className='secondery_header_wraper'>
-                    <div className='container'>
-                        <div className='secondery_header'>
-                            <Button to={'/property/all'} title="Back To All Property" className="primary_border"/>
-                        </div>
-                    </div>
-                </div>
                 <div className='container'>
                     <div className='property_form'>
                         <DisplayErrors errors={this.state.errors}/>
-                        <Dropdown name="property_type" label="Property Type" value={property.property_type} onChange={ this.onChangeHanlder.bind(this)} options={ propertyTypes }/>
-
+                        <div className='d-flex gap-4'>
+                            {
+                                propertyTypes.map( pType => {
+                                    return <div><Input id={'pro_type_'+pType.property_type_id} onChange={ this.onChangeHanlder.bind(this)} name="property_type" inputClassName={"radio_input"} inputType="radio" value={pType.property_type_id} label={pType.name}/></div>
+                                })  
+                            }
+                        </div>
+                        <div className='row'>
+                            {
+                                propertyFields.map( pField => {
+                                    return this.getField(pField)
+                                })
+                            }
+                        </div>
+                        
                         <Input name="name" label="Property Name" value={property.name} onChange={ this.onChangeHanlder.bind(this)}/>
                         <div className='row'>
                             <div className='col-xs-12 col-sm-6'><Input name="size" label="Size"  value={property.size} onChange={ this.onChangeHanlder.bind(this)}/></div>

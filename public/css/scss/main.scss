@@ -37,6 +37,10 @@ body{
         outline: none !important;
         box-shadow: none !important;
     }
+    .form-control.radio_input{
+        width: 30px;
+        height: 30px;
+    }
 }
 .login_register_page{
     margin:0;

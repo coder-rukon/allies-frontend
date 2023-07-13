@@ -51,7 +51,26 @@ body{
     textarea.form-control{
         height: 150px;
     }
+    .form-control.radio_input{
+        width: 20px;
+        height: 20px;
+        appearance: radio;
+    }
 }
+.form-group.radion_input_box{
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    label{
+        order: 2;
+        margin:0;
+        padding: 0;
+    }
+    .rs_input_box_wraper{
+        order: 1;
+    }
+}
+
 .login_register_page{
     margin:0;
     padding: 0;

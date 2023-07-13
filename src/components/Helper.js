@@ -80,6 +80,44 @@ let Helper = {
             {label:'Retail' , value:"retail"}
         ]
         return propertyTypes;
+    },
+    getPropertyFields(){
+        //listing_type,status,address_line_1,address_line_2,city,state,country,zip_code,size,acres,zoning,private_offices,bathrooms,parking_ratio,suites,min_space,max_contiguous_space,year_built,class,submarket,lease_rate,notes
+        //listing_type,status,address_line_1,address_line_2,city,state,country,zip_code,size,acres,zoning,private_offices,bathrooms,parking_ratio,suites,min_space,max_contiguous_space,year_built,class,submarket,price_per_sf,sale_price,notes
+        let propertyFields = [
+            {name:'address_line_1',label:'Address Line 1',inputWraperClass:'col-xs-12'},
+            {name:'address_line_2',label:'Address Line 2',inputWraperClass:'col-xs-12'},
+            {name:'city',label:'City',inputType:'dropdown'},
+            {name:'state',label:'State',inputType:'dropdown'},
+            {name:'country',label:'Country',inputType:'dropdown'},
+            {name:'zip_code',label:'Zip Code',inputWraperClass:'col-xs-12 col-sm-3'},
+            {name:'size',label:'Size'},
+            {name:'acres',label:'Acres'},
+            {name:'zoning',label:'Zoning'},
+            {name:'private_offices',label:'# of Private Offices'},
+            {name:'bathrooms',label:'# of Bathrooms'},
+            {name:'parking_ratio',label:'Parking Ratio'},
+            {name:'suites',label:'# of Suites'},
+            {name:'min_space',label:'Min Space'},
+            {name:'max_contiguous_space',label:'Max Contiguous Space'},
+            {name:'dock_doors',label:'# of Dock Doors'},
+            {name:'drive_in_doors',label:'# of Drive-In Doors'},
+            {name:'clear_height',label:'Clear Height'},
+            {name:'year_built',label:'Year Built'},
+            {name:'total_parking',label:'Total Parking'},
+            {name:'units',label:'# of Units'},
+            {name:'vehicles_per_day',label:'Vehicles per Day'},
+            {name:'available_utilities',label:'Available Utilities'},
+            {name:'retail_type',label:'Retail Type'},
+            {name:'class',label:'Class'},
+            {name:'submarket',label:'Submarket'},
+            {name:'lease_rate',label:'Lease Rate'},
+            {name:'sale_price',label:'Sale Price'},
+            {name:'price_per_sf',label:'Price per Sq. Ft.'},
+            {name:'price_per_acre',label:'Price per Acre'},
+            {name:'notes',label:'Notes',inputWraperClass:'col-xs-12',inputType:'textarea'}
+        ]
+        return propertyFields;
     }
 }
 export default Helper;

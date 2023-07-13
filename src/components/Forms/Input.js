@@ -65,6 +65,9 @@ class Input extends Component {
         if(this.props.onKeyPress){
             inputProps.onKeyPress = this.props.onKeyPress;
         }
+        if(this.props.id){
+            inputProps.id = this.props.id
+        }
         if(props.disable){
             let value = props.value;
             return <InputPlaceholder label= {value }/>
@@ -96,9 +99,12 @@ class Input extends Component {
         if(props.labelAlign && props.labelAlign ==='left'){
             cssClass = cssClass+' lebel_align_left';
         }
+        if(this.props.inputType ==='radio'){
+            cssClass = cssClass+' lebel_align_left radion_input_box';
+        }
         return (
             <div className={  cssClass + ( this.hasError() ? ' invalid' : '' ) }>
-                {props.label ? <label>{props.label} {this.state.isRequired ? <span>*</span> : ''}</label> : '' }
+                {props.label ? <label htmlFor={props.id}>{props.label} {this.state.isRequired ? <span>*</span> : ''}</label> : '' }
                 <div className="rs_input_box_wraper">{ this.getInputBox() }</div>
                 { props.helpText ? <small className={ ( props.helpTextClass ? props.helpTextClass : '' ) + " form-text text-muted" }>{props.helpText}</small> : ''}
             </div>
