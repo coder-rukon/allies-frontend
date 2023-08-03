@@ -37,6 +37,11 @@ body {
     width: 30px;
     height: 30px; }
 
+.page_title {
+  font-size: 20px;
+  margin: 0 0 20px 0;
+  font-weight: 500; }
+
 .login_register_page {
   margin: 0;
   padding: 0;

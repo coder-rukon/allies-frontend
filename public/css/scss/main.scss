@@ -42,6 +42,11 @@ body{
         height: 30px;
     }
 }
+.page_title{
+    font-size: 20px;
+    margin: 0 0 20px 0;
+    font-weight: 500;
+}
 .login_register_page{
     margin:0;
     padding: 0;
@@ -50,6 +55,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+   
     .header_login_register{
         margin-bottom: auto;
     }
@@ -82,3 +88,4 @@ body{
         }
     }
 }
+

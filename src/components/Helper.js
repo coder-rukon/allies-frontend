@@ -82,14 +82,12 @@ let Helper = {
         return propertyTypes;
     },
     getPropertyFields(){
-        //listing_type,status,address_line_1,address_line_2,city,state,country,zip_code,size,acres,zoning,private_offices,bathrooms,parking_ratio,suites,min_space,max_contiguous_space,year_built,class,submarket,lease_rate,notes
-        //listing_type,status,address_line_1,address_line_2,city,state,country,zip_code,size,acres,zoning,private_offices,bathrooms,parking_ratio,suites,min_space,max_contiguous_space,year_built,class,submarket,price_per_sf,sale_price,notes
         let propertyFields = [
             {name:'address_line_1',label:'Address Line 1',inputWraperClass:'col-xs-12'},
             {name:'address_line_2',label:'Address Line 2',inputWraperClass:'col-xs-12'},
-            {name:'city',label:'City',inputType:'dropdown'},
-            {name:'state',label:'State',inputType:'dropdown'},
             {name:'country',label:'Country',inputType:'dropdown'},
+            {name:'state',label:'State',inputType:'dropdown'},
+            {name:'city',label:'City'},
             {name:'zip_code',label:'Zip Code',inputWraperClass:'col-xs-12 col-sm-3'},
             {name:'size',label:'Size'},
             {name:'acres',label:'Acres'},
@@ -107,10 +105,10 @@ let Helper = {
             {name:'total_parking',label:'Total Parking'},
             {name:'units',label:'# of Units'},
             {name:'vehicles_per_day',label:'Vehicles per Day'},
-            {name:'available_utilities',label:'Available Utilities'},
+            {name:'available_utilities',label:'Available Utilities', inputType:'dropdown',options:Helper.getPropertyAvailableUnits()},
             {name:'retail_type',label:'Retail Type'},
-            {name:'class',label:'Class'},
-            {name:'submarket',label:'Submarket'},
+            {name:'class',label:'Class',inputType:'dropdown',options:Helper.getPropertyClass()},
+            {name:'submarket',label:'Submarket', inputType:'dropdown',options:Helper.getPropertySubmarket()},
             {name:'lease_rate',label:'Lease Rate'},
             {name:'sale_price',label:'Sale Price'},
             {name:'price_per_sf',label:'Price per Sq. Ft.'},
@@ -118,6 +116,45 @@ let Helper = {
             {name:'notes',label:'Notes',inputWraperClass:'col-xs-12',inputType:'textarea'}
         ]
         return propertyFields;
+    },
+    getPropertyStatus(){
+        let options = [
+            {label:'Available',value:'available'},
+            {label:'Not Available',value:'not_available'},
+        ]
+        return options;
+    },
+    getPropertySubmarket(){
+        let options = [
+            {value:'CBD',label:'CBD'},
+            {value:'Midtown',label:'Midtown'},
+            {value:'Fishers',label:'Fishers'},
+            {value:'Keystone',label:'Keystone'},
+            {value:'North/Carmel',label:'North/Carmel'},
+            {value:'Northeast',label:'Northeast'},
+            {value:'Northwest',label:'Northwest'},
+            {value:'South',label:'South'},
+            {value:'West',label:'West'}
+        ]
+        return options;
+    },
+    getPropertyClass(){
+        
+        let options = [
+            {value:'A',label:'A'},
+            {value:'B',label:'B'},
+            {value:'C',label:'C'},
+        ]
+        return options;
+    },
+    getPropertyAvailableUnits(){
+        
+        let options = [
+            {value:'To Site',label:'To Site'},
+            {value:'Near Site',label:'Near Site'},
+            {value:'None',label:'None'},
+        ]
+        return options;
     }
 }
 export default Helper;

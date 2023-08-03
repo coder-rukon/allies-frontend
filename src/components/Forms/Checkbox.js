@@ -28,7 +28,7 @@ class Checkbox extends Component {
         let id = this.props.id ? this.props.id : Math.floor(Math.random() * 100);
         return (
             <div className="form-group custom-control custom-checkbox rs_input_checkbox">
-                <input type="checkbox" checked={this.state.isChecked} onChange={ e => this.onChangeHandler(e) } className="custom-control-input" name={this.props.name} id={id}/>
+                <input type="checkbox" checked={this.state.isChecked} onChange={ e => this.onChangeHandler(e) } value={this.props.value} className="custom-control-input" name={this.props.name} id={id}/>
                 <label className="custom-control-label" htmlFor={id}>{this.props.label}</label>
             </div>
         );

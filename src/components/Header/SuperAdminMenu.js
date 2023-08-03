@@ -11,6 +11,7 @@ class SuperAdminMenu extends Component {
         return (
             <>
                 <li><Link to="/users"><Icon className='uil-users-alt'/> <span>All users</span></Link></li>
+                <li><Link to="/super-admin/settings/property-form"><Icon className='uil-cog'/> <span>Settings</span></Link></li>
                 <li className='divider'></li>
             </>
         );

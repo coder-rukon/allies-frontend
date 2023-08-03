@@ -14,6 +14,7 @@ import DealDetails from './pages/DealDetails';
 import DealArchive from './pages/DealArchive';
 import MyProfile from './pages/MyProfile';
 import Users from './pages/Users';
+import Settings from './pages/Settings';
 class App extends Component {
     render() {
         return (
@@ -34,6 +35,9 @@ class App extends Component {
                     <Route path="/company/:id/:page" element={<CompanyDetails />}/>
                     <Route path="/my-profile" element={<MyProfile />}/>
                     <Route path="/users" element={<Users />}/>
+                    <Route path="/super-admin">
+                        <Route path="settings/:page" element={<Settings />}/>
+                    </Route>
                     
                 </Routes>
             </div>

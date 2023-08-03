@@ -105,7 +105,7 @@ class AccountsPage extends Component {
                     <Dropdown  options={statusOptions} name="account_status" value={this.state.status} onChange={this.onStatusChange.bind(this)}/>
                 </div>
                 <div>
-                    <Button title="Archive"onClick={ this.changeCompanyStates.bind(this,'archive')} />
+                    <Button title="Archive" onClick={ this.changeCompanyStates.bind(this,'archive')} />
                 </div>
                 <div>
                     <Button title="Active" onClick={ this.changeCompanyStates.bind(this,'active')} />

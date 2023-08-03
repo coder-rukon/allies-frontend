@@ -15,6 +15,9 @@ class Tab extends Component {
             active:navItem.id
         })
     }
+    getActiveClass(){
+
+    }
     render() {
         let navs = this.props.navs ? this.props.navs : [];
         return (
@@ -22,7 +25,7 @@ class Tab extends Component {
                 <div className='tab_nav'>
                     {navs.map((navItem,key) =>{
                         return(
-                            <div className={this.state.active == navItem.id ? 'tab_nav_item active': 'tab_nav_item'} key={key} onClick={e => this.onClickHanlder(navItem)}>
+                            <div className={this.state.active == navItem.id || (!this.state.active &&  navItem.isActive) ? 'tab_nav_item active': 'tab_nav_item'} key={key} onClick={e => this.onClickHanlder(navItem)}>
                                 {navItem.title}
                             </div>
                         )
