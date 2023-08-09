@@ -8,6 +8,8 @@ import Alert from '../widget/Alert';
 import DisplayErrors from '../widget/DisplayErrors';
 import SimpleLoader from '../widget/SimpleLoader';
 import Settings from '../Settings';
+import ActionTypes from '../../actions/ActionsTypes';
+import { connect } from 'react-redux';
 
 class CreateProperty extends Component {
     constructor(props) {
@@ -17,12 +19,31 @@ class CreateProperty extends Component {
             property_type:null,
             listing_type:null,
             property_types:[],
+            stateList:[],
             errors:{},
             isLoading:false
         }
     }
     componentDidMount(){
         this.loadPropertyTypes();
+        this.loadAllCountry();
+        this.loadState();
+    }
+    loadState(){
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/locations/state').then(res => {
+            that.props.setState(res.data)
+        })
+    }
+    loadAllCountry(){
+        let api = Api;
+        api.setUserToken();
+        let that = this;
+        api.axios().get('/locations/country').then(res => {
+            that.props.setCountry(res.data)
+        })
     }
     loadPropertyTypes(){
         let api = Api;
@@ -74,15 +95,53 @@ class CreateProperty extends Component {
             }
         })
     }
+    onChangeCountry(event){
+        this.setState({
+            property:{
+                ...this.state.property,
+                [event.target.name]:event.target.value
+            }
+        })
+        let allState = [];
+        this.props.location.state.forEach(element => {
+            if(element.country_id == event.target.value){
+                allState.push(element);
+            }
+        });
+        this.setState({
+            stateList:allState
+        })
+    }
+    getFieldProps(field){
+        let propsList = {
+            onChange:this.onChangeHanlder.bind(this),
+        }
+        if(field.inputType == 'dropdown'){
+            if(field.name == 'country'){
+                propsList.options = this.props.location.country.map( item => { return {label: item.name,value:item.id}});
+                propsList.onChange = this.onChangeCountry.bind(this);
+            }
+            else if(field.name == 'state'){
+                propsList.options =  this.state.stateList.map( item => { return {label:item.name,value:item.id}});
+                //propsList.onChange = this.onChangeCountry.bind(this);
+            }
+            else{
+                if(propsList.options){
+                    propsList.options = field.options;
+                }
+            }
+        }
+        return propsList;
+    }
     getField(pField){
         let property = this.state.property;
         if(!this.isExistField(pField.name)){
             return <></>
         }
         if(pField.inputType =='dropdown'){
-            return <div className={ pField.inputWraperClass ? pField.inputWraperClass : 'col-xs-12 col-sm-4'}><Dropdown {...pField} name={pField.name} label={pField.label} value={property[pField.name]} onChange={ this.onChangeHanlder.bind(this)} options={pField.options ? pField.options : [] }/></div>
+            return <div className={ pField.inputWraperClass ? pField.inputWraperClass : 'col-xs-12 col-sm-4'}><Dropdown {...pField} options={[]} {...this.getFieldProps(pField)}  name={pField.name} label={pField.label} value={property[pField.name]} /></div>
         }
-        return <div className={ pField.inputWraperClass ? pField.inputWraperClass : 'col-xs-12 col-sm-4'}><Input {...pField} name={pField.name} label={pField.label} value={property[pField.name]} onChange={ this.onChangeHanlder.bind(this)}/></div>
+        return <div className={ pField.inputWraperClass ? pField.inputWraperClass : 'col-xs-12 col-sm-4'}><Input {...pField} {...this.getFieldProps(pField)} name={pField.name} label={pField.label} value={property[pField.name]} /></div>
     }
     isExistField(name){
         let property_type = this.state.property_type;
@@ -126,6 +185,7 @@ class CreateProperty extends Component {
         ]
         let statusOptions = Helper.getPropertyStatus();
         let propertyFields = Helper.getPropertyFields();
+        console.log(this.props.location.country)
         return (
             <div className='property_create_page'>
                 <div className='container'>
@@ -165,5 +225,16 @@ class CreateProperty extends Component {
         );
     }
 }
-
-export default CreateProperty;
+const mapStateToProps = (props) => {
+    return {
+        location:props.location
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return({
+        setCountry: (country) => { dispatch({type:ActionTypes.SET_COUNTRY,payload:country})},
+        setState: (state) => { dispatch({type:ActionTypes.SET_STATE,payload:state})},
+        setCity: (city) => { dispatch({type:ActionTypes.SET_CITY,payload:city})},
+    })
+}
+export default connect(mapStateToProps,mapDispatchToProps)( CreateProperty );

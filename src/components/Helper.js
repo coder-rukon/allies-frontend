@@ -105,10 +105,10 @@ let Helper = {
             {name:'total_parking',label:'Total Parking'},
             {name:'units',label:'# of Units'},
             {name:'vehicles_per_day',label:'Vehicles per Day'},
-            {name:'available_utilities',label:'Available Utilities', inputType:'dropdown',options:Helper.getPropertyAvailableUnits()},
+            {name:'available_utilities',label:'Available Utilities', inputType:'dropdown',options: (propertyType,listingType) => { return Helper.getPropertyAvailableUnits(propertyType,listingType) } },
             {name:'retail_type',label:'Retail Type'},
-            {name:'class',label:'Class',inputType:'dropdown',options:Helper.getPropertyClass()},
-            {name:'submarket',label:'Submarket', inputType:'dropdown',options:Helper.getPropertySubmarket()},
+            {name:'class',label:'Class',inputType:'dropdown',options: (propertyType,listingType) => { return Helper.getPropertyClass(propertyType,listingType) }},
+            {name:'submarket',label:'Submarket', inputType:'dropdown',options: (propertyType,listingType) => { return Helper.getPropertySubmarket(propertyType,listingType) } },
             {name:'lease_rate',label:'Lease Rate'},
             {name:'sale_price',label:'Sale Price'},
             {name:'price_per_sf',label:'Price per Sq. Ft.'},
@@ -124,7 +124,7 @@ let Helper = {
         ]
         return options;
     },
-    getPropertySubmarket(){
+    getPropertySubmarket(propertyType =null,listingType=null){
         let options = [
             {value:'CBD',label:'CBD'},
             {value:'Midtown',label:'Midtown'},
@@ -138,7 +138,7 @@ let Helper = {
         ]
         return options;
     },
-    getPropertyClass(){
+    getPropertyClass(propertyType =null,listingType=null){
         
         let options = [
             {value:'A',label:'A'},
@@ -147,7 +147,7 @@ let Helper = {
         ]
         return options;
     },
-    getPropertyAvailableUnits(){
+    getPropertyAvailableUnits(propertyType =null,listingType=null){
         
         let options = [
             {value:'To Site',label:'To Site'},
