@@ -66,7 +66,8 @@ class DealPipleLineItem extends Component {
             <div className='deals_piplelins_item'>
                 <div className='deals_piplelins_item_inner' style={styles}>
                     <h3 className='deals_piplelins_item_title'>
-                        {stage.name}
+                        <strong>{stage.name}</strong>
+                        <span>1 Entry</span>
                     </h3>
                     <div className='deals_piplelins_contents'>
                         { this.state.isLoading ? <SimpleLoader/> : '' }

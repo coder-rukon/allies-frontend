@@ -29,6 +29,8 @@ class DealPipelineItemWidget extends Component {
     }
     render() {
         let deal = this.props.deal;
+        let iconRight = '/images/right-arrow.svg';
+        let iconLeft = '/images/left-arrow.svg';
         return (
             <>
                 <div className='pipeline_widget' onClick={ e => this.onClickHandler(e)}>
@@ -36,6 +38,11 @@ class DealPipelineItemWidget extends Component {
                     <ul className='options'>
                         {this.displayPropertyDetails()}
                     </ul>
+                    <div className='rs_plw_footer'>
+                        <span style={{backgroundImage:"url("+iconLeft+")"}}></span>
+                        <strong>Buyer Rep</strong>
+                        <span style={{backgroundImage:"url("+iconRight+")"}}></span>
+                    </div>
                 </div>
             </>
             

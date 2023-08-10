@@ -438,18 +438,39 @@ body {
     min-height: 80vh; }
   .deals_piplelins .deals_piplelins_item_inner {
     display: block;
-    min-width: 200px;
+    min-width: 250px;
     background: #F8F9FA;
     min-height: 100%;
     box-sizing: border-box;
-    padding: 15px; }
+    padding: 0; }
     .deals_piplelins .deals_piplelins_item_inner .deals_piplelins_item_title {
       font-size: 16px;
       margin: 0;
-      padding: 10px 0 15px 0;
       font-weight: 500;
       color: #000;
-      white-space: nowrap; }
+      white-space: nowrap;
+      background-color: #E5E7EB;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 20px;
+      align-items: center; }
+      .deals_piplelins .deals_piplelins_item_inner .deals_piplelins_item_title span {
+        color: #000;
+        font-size: 14px;
+        font-weight: 400; }
+      .deals_piplelins .deals_piplelins_item_inner .deals_piplelins_item_title strong {
+        color: #000;
+        background: #f4932c;
+        padding: 5px 9px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500; }
+    .deals_piplelins .deals_piplelins_item_inner .deals_piplelins_contents {
+      border-left: 1px solid #E5E7EB;
+      border-right: 1px solid #E5E7EB;
+      border-bottom: 1px solid #E5E7EB;
+      padding: 15px;
+      min-height: 100vh; }
     .deals_piplelins .deals_piplelins_item_inner .pipeline_widget {
       display: block;
       border: 1px solid #dbdbdb;
@@ -463,12 +484,14 @@ body {
         font-size: 14px;
         font-weight: 500;
         color: #333;
-        margin: 0 0 5px 0; }
+        margin: 0 0 5px 0;
+        border-bottom: 1px solid #E5E7EB;
+        padding: 9px 7px; }
       .deals_piplelins .deals_piplelins_item_inner .pipeline_widget ul {
         display: block;
         list-style: none;
         margin: 0;
-        padding: 0;
+        padding: 5px 0;
         font-size: 12px;
         font-weight: 400; }
       .deals_piplelins .deals_piplelins_item_inner .pipeline_widget ul li {
@@ -476,8 +499,39 @@ body {
         margin-bottom: 2px;
         overflow: hidden; }
         .deals_piplelins .deals_piplelins_item_inner .pipeline_widget ul li span {
+          font-weight: 500; }
+      .deals_piplelins .deals_piplelins_item_inner .pipeline_widget .rs_plw_footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        margin: 0 0 6px 0; }
+        .deals_piplelins .deals_piplelins_item_inner .pipeline_widget .rs_plw_footer span {
+          text-align: center;
+          background-color: #f4932c;
+          width: 70px;
+          height: 26px;
+          cursor: pointer;
+          background-position: center center;
+          background-repeat: no-repeat;
+          border-radius: 4px; }
+        .deals_piplelins .deals_piplelins_item_inner .pipeline_widget .rs_plw_footer strong {
+          text-align: center;
+          border: 1px solid #f4932c;
           color: #f4932c;
-          font-weight: 600; }
+          font-weight: 400;
+          width: 100%;
+          border-radius: 4px;
+          padding: 2px; }
+
+.deal_pipeline_page.deepblue_template.deepblue_template .deals_piplelins_item_inner .pipeline_widget .rs_plw_footer span,
+.deal_pipeline_page.deepblue_template.deepblue_template .deals_piplelins_item_inner .deals_piplelins_item_title strong,
+.deal_pipeline_page.deepblue_template.deepblue_template .filter_type span.active {
+  background-color: #062C3E; }
+.deal_pipeline_page.deepblue_template.deepblue_template .deals_piplelins_item_inner .pipeline_widget .rs_plw_footer strong {
+  border-color: #062C3E;
+  color: #062C3E; }
+.deal_pipeline_page.deepblue_template.deepblue_template .deals_piplelins_item_inner .deals_piplelins_item_title strong {
+  color: #fff; }
 
 .deal_deatils_section .deal_header .dh_items {
   align-items: center;
@@ -778,5 +832,24 @@ body {
 .property_page_settings h5 {
   font-size: 15px;
   margin: 20px 0 10px 0; }
+
+.deal_pipeline_page .filter_type {
+  display: block;
+  margin: 0;
+  padding: 0; }
+  .deal_pipeline_page .filter_type span {
+    display: inline-block;
+    background: #E5E7EB;
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    cursor: pointer; }
+  .deal_pipeline_page .filter_type span.active {
+    background-color: #f4932c;
+    color: #fff; }
 
 /*# sourceMappingURL=main.css.map */
